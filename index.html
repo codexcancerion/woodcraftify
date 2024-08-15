@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woodcraftify</title>
+
+    <!-- MATERIAL ICONS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- GLOBAL STYLES -->
+    <link rel="stylesheet" href="./assets/globals/globals.css">
+    <link rel="stylesheet" href="./assets/components/components.css">
+    <!-- PAGE STYLES -->
+    <link rel="stylesheet" href="./style.css">
+    
+    <!-- ROUTES -->
+    <script>
+        const root = "./";
+    </script>
+    
+    <!-- EXTERNAL SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./data/products.js"></script>
+    <script src="./data/users.js"></script>
+    <script src="./data/shops.js"></script>
+    <script src="./assets/globals/globals.js"></script>
+    <script src="./assets/components/components.js"></script>
+</head>
+<body>
+    <header id="header">
+        <script>
+            Navbar("header", root);
+        </script>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="title-section">
+                <h1 class="hero-title">Furnish your homes like a <span class="colored">MASTER</span></h1>
+                <p class="hero-subtitle">In Woodcraftify, we help you furnish your homes with quality crafts and furnitures.</p>
+                <a href="./views/marketplace/index.html"><div class="hero-button">Explore Products <i class="material-icons">arrow_right</i> </div></a>
+            </div>
+            <div class="img-section">
+                <div class="img-holder">
+                    <img src="./assets/images/hero.png" alt="" class="hero-img">
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section">
+            <h1 class="page-title left">Featured Products<hr></h1>
+            <div class="featured-products">
+                <script>
+                    FeaturedProducts2(root);
+                </script>
+            </div>            
+        </section>
+
+        <section class="section colored chooseus">
+            <h2 class="page-title">Why choose our products?</h2>
+            <div class="values-holder">
+                <div class="value">
+                    <img class="value-img" src="./assets/images/craftify/quality.jpg" alt="">
+                    <h2 class="value-title">Quality</h2>
+                    <p class="tagline">Uncompromising quality, built to last.</p>
+                </div>
+                <div class="value">
+                    <img class="value-img" src="./assets/images/craftify/craftmanship.jpg" alt="">
+                    <h2 class="value-title">Craftmanship</h2>
+                    <p class="tagline">Crafted with precision, designed with passion.</p>
+                </div>
+                <div class="value">
+                    <img class="value-img" src="./assets/images/craftify/artistry.jpg" alt="">
+                    <h2 class="value-title">Artistry</h2>
+                    <p class="tagline">Every piece, a work of art.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="tag-holder">
+            <h1 class="tag">"Woodcraftify choose only the best"</h1>
+        </div>
+    </main>
+    
+    <footer id="footer">
+        <script>
+            Footer('footer', root);
+        </script>
+    </footer>
+    
+</body>
+</html>

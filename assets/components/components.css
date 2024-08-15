@@ -1,0 +1,233 @@
+
+
+/* NAVBAR */
+nav {
+    /* background-color: var(--cool1); */
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 0 20px; */
+    width: 100vw !important;
+}
+nav .portion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60%;
+    padding: 0 20px;
+}
+.portion .logo-holder {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+.portion .logo-holder img {
+    height: 30px;
+}
+.portion .logo-holder h3 {
+    margin-left: 20px;
+}
+.portion.nav-logo a{
+    /* color: var(--cool4); */
+    color: var(--cool3)
+}
+.portion.nav-links a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.portion.nav-links .link {
+    margin: 0 10px;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    transition: .5s;
+    border-radius: 7px;
+    /* color: var(--cool4); */
+    color: var(--cool3);
+    font-size: small;
+}
+.portion.nav-links .link.contained {
+    /* color: var(--cool4); */
+    color: white;
+    font-size: small;
+    background-color: var(--cool4);
+}
+.portion.nav-links .link i {
+    padding-right: 8px;
+}
+.portion.nav-links .link:hover {
+    background-color: rgb(238, 238, 238);
+    color: var(--cool3);
+    /* border: 1px solid var(--cool3); */
+}
+
+
+@media (max-width: 768px) {
+    nav {
+        height: fit-content;
+        padding: 20px 0;
+        display: flex;
+        flex-wrap: wrap !important;
+        align-items: center;
+        /* justify-content: space-between; */
+        width: 100vw !important;
+    }
+    nav .portion {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: start;
+        flex-wrap: wrap;
+        height: 60%;
+        padding: 0 20px;
+    }
+    nav .portion.nav-links .link {
+        margin: 0 10px;
+        padding: 0 20px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        transition: .5s;
+        border-radius: 7px;
+        /* color: var(--cool4); */
+        color: var(--cool3);
+        font-size: small;
+    }
+}
+
+
+
+/* FOOTER */
+footer {
+    background-color: var(--cool2); /* Footer background color */
+    color: white; /* Footer text color */
+    text-align: center;
+    padding: 40px 10%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100vw !important
+}
+
+footer .logo {
+    height: 30px;
+}
+footer hr {
+    width: 100%;
+}
+
+.footer-section {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-section h3 {
+    color: var(--cool4);
+    margin-bottom: 10px;
+}
+
+.footer-section p, .footer-section a {
+    color: var(--cool4);
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: var(--cool3);
+}
+
+
+
+
+
+/* PRODUCT CARD */
+.product-card {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-card .product-image-holder {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+.product-card .product-image {
+    width: 100%;
+    display: block;
+}
+
+.product-card .product-details {
+    padding: 0px 20px;
+    text-align: left;
+}
+
+.product-card .product-name {
+    font-size: 18px;
+    color: var(--cool3);
+    margin-bottom: 10px;
+}
+
+.product-card .product-price {
+    font-size: 16px;
+    color: var(--cool4);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.product-card .product-category,
+.product-card .product-dimensions,
+.product-card .product-materials,
+.product-card .product-tags,
+.product-card .shop-name {
+    font-size: 14px;
+    color: gray;
+    margin: 0;
+}
+
+.product-card .cta-button {
+    background-color: var(--cool3);
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 0 0 8px 8px;
+    margin-top: 20px;
+}
+
+.product-card .cta-button:hover {
+    background-color: var(--cool4);
+    color: var(--button-hover-text);
+}
+
+
+
+
+/* FEATURED PRODUCTS */
+.featured-products {
+    display: flex;
+    justify-content: center;
+}
+.featured-products .product-card {
+    margin: 0 20px;
+}
