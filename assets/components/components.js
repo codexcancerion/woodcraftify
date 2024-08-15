@@ -1,6 +1,6 @@
 const logoLink = "assets/images/logo.png";
 const webtitle = "WOODCRAFTIFY";
-const imgSrc = "assets/imgages/";
+const imgSrc = "assets/images/";
 
 const Navbar = (targetTagId, linkPrefix) => {
     
@@ -13,12 +13,12 @@ const Navbar = (targetTagId, linkPrefix) => {
     homeLink.innerHTML = '<div class="logo-holder"><img src="'+linkPrefix+logoLink+'" class="logo"></img></div>';
 
     var enterprise = document.createElement('a');
-    enterprise.href = linkPrefix + 'views/enterprise.html';
-    enterprise.innerHTML = '<div class="link contained"><i class="material-icons">store</i> Enterprise</div>';
+    enterprise.href = linkPrefix + 'views/shop/index.html';
+    enterprise.innerHTML = '<div class="link contained"><i class="material-icons">store</i> Shop</div>';
 
-    var productsLink = document.createElement('a');
-    productsLink.href = linkPrefix + 'views/products.html';
-    productsLink.innerHTML = '<div class="link"><i class="material-icons">category</i> Marketplace</div>';
+    // var productsLink = document.createElement('a');
+    // productsLink.href = linkPrefix + 'views/products.html';
+    // productsLink.innerHTML = '<div class="link"><i class="material-icons">category</i> Marketplace</div>';
 
     
     var aboutusLink = document.createElement('a');
@@ -43,9 +43,9 @@ const Navbar = (targetTagId, linkPrefix) => {
     // // dashboardLink.innerHTML = '<div class="link">Dashboard</div>';
     // dashboardLink.innerHTML = '<div class="link"><i class="material-icons">account_circle</i></div>';
 
-    var loginLink = document.createElement('a');
-    loginLink.href = linkPrefix + 'pages/login.html';
-    loginLink.innerHTML = '<div class="link">Login</div>';
+    // var loginLink = document.createElement('a');
+    // loginLink.href = linkPrefix + 'pages/login.html';
+    // loginLink.innerHTML = '<div class="link">Login</div>';
 
     // var registerLink = document.createElement('a');
     // registerLink.href = linkPrefix + 'pages/register.html';
@@ -73,7 +73,7 @@ const Navbar = (targetTagId, linkPrefix) => {
     // navLinks.appendChild(locationLink);
     // navLinks.appendChild(contactLink);
 
-    rightLinks.appendChild(productsLink);
+    // rightLinks.appendChild(productsLink);
     rightLinks.appendChild(enterprise);
     rightLinks.appendChild(aboutusLink);
     // rightLinks.appendChild(loginLink);
@@ -126,7 +126,7 @@ const Footer = (targetTagId, linkPrefix) => {
 
 
 
-const createCard2 = (product, linkPrefix) => {
+const createCard2 = (targetTagId, product, linkPrefix) => {
     // Create card container
     const $card = $('<div>', { class: 'product-card' });
 
@@ -135,7 +135,7 @@ const createCard2 = (product, linkPrefix) => {
     const $image = $('<img>', {
         // src: linkPrefix+imgSrc+product.productId,        
         src: linkPrefix+"assets/images/hero.jpg",
-        alt: product.name,
+        alt: product.productName,
         class: 'product-image'
     });
     $imageHolder.append($image);
@@ -152,7 +152,7 @@ const createCard2 = (product, linkPrefix) => {
     $details.append($description);
 
     // Create product price
-    const $price = $('<p>', { class: 'product-price', text: `$${product.price}` });
+    const $price = $('<p>', { class: 'product-price', text: `P ${product.price}` });
     $details.append($price);
 
     // Create product category
@@ -189,17 +189,25 @@ const createCard2 = (product, linkPrefix) => {
     $card.append($imageHolder, $details, $ctaButton);
 
     // Append the card to the page (assuming you have a container with class 'product-container')
-    $('.featured-products').append($card);
+    $('.'+targetTagId).append($card);
+
+     // Add click event to the card
+     $card.on('click', () => {
+        // Open the details page
+        window.location.href = `${linkPrefix}views/shop/product/index.html?productId=${product.productId}`;
+    });
 }
 
 
 
 
-const FeaturedProducts2 = (linkPrefix) => {
-    featuredProducts.map( product => createCard2(product, linkPrefix));
+const FeaturedProducts2 = (targetTagId, linkPrefix) => {
+    featuredProducts.map( product => createCard2(targetTagId, product, linkPrefix));
 }
 
-
+const AllProducts = (targetTagId, linkPrefix) => {
+    products.map( product => createCard2(targetTagId, product, linkPrefix));
+}
 
 
 
@@ -210,59 +218,90 @@ function getShopNameById(shopId) {
 }
 
 
+ // Fetch product details based on productId
+ const fetchProductDetails = (productId) => {    
+    products.map(product => {
+        if (product.productId === productId){
+            console.log(product);
+            return product;
+        }
+    })    
+};
 
 
 
 
 
 
+const showCategory = (category, linkPrefix) => {
+    $(".all-products").empty();  // Clear existing product cards
 
-
-
-
-const Category = (category, linkPrefix) => {
-    
-    Array.from(document.getElementsByClassName('card')).map(card => card.style.display = 'none');
-
-    switch (category) {
-        case 'All' :
-            AllProducts(linkPrefix);
-            break;
-        case 'Coffee' :
-            products.map( product => {
-                product.category === 'Coffee' ? createCard(product, linkPrefix) : null;
-            });
-            break;
-        case 'Tea' :
-            products.map( product => {
-                product.category === 'Tea' ? createCard(product, linkPrefix) : null;
-            });
-            break;
-        case 'Pastry' :
-            products.map( product => {
-                product.category === 'Pastry' ? createCard(product, linkPrefix) : null;
-            });
-            break;
-        case 'Sandwiches' :
-            products.map( product => {
-                product.category === 'Sandwiches' ? createCard(product, linkPrefix) : null;
-            });
-            break;
-        case 'Shakes' :
-            products.map( product => {
-                product.category === 'Shakes' ? createCard(product, linkPrefix) : null;
-            });
-            break;
-        case 'Desserts' :
-            products.map( product => {
-                product.category === 'Desserts' ? createCard(product, linkPrefix) : null;
-            });
-            break;
-        default :
-            AllProducts(linkPrefix);
-            break;
+  
+    if (category === 'All') {
+      AllProducts("all-products", linkPrefix);
+      $(".category-title").text("Products");
+      $(".category-subtitle").text("Choose wise and craftify.");
+    } else {
+      products.forEach(product => {
+        if (product.category === category) {
+            $(".category-title").text(category);
+          createCard2("all-products", product, linkPrefix);
+        }
+      });
     }
-}
+    
+    categories.forEach(cat => {
+        if (cat.categoryName === category) {
+            $(".category-subtitle").text(cat.categoryDescription);
+        }
+    })
+  };
+
+
+
+// const showCategory = (category, linkPrefix) => {
+    
+//     Array.from(document.getElementsByClassName('card')).map(card => card.style.display = 'none');
+
+//     switch (category) {
+//         case 'All' :
+//             AllProducts(linkPrefix);
+//             break;
+//         case 'Coffee' :
+//             products.map( product => {
+//                 product.category === 'Coffee' ? createCard(product, linkPrefix) : null;
+//             });
+//             break;
+//         case 'Tea' :
+//             products.map( product => {
+//                 product.category === 'Tea' ? createCard(product, linkPrefix) : null;
+//             });
+//             break;
+//         case 'Pastry' :
+//             products.map( product => {
+//                 product.category === 'Pastry' ? createCard(product, linkPrefix) : null;
+//             });
+//             break;
+//         case 'Sandwiches' :
+//             products.map( product => {
+//                 product.category === 'Sandwiches' ? createCard(product, linkPrefix) : null;
+//             });
+//             break;
+//         case 'Shakes' :
+//             products.map( product => {
+//                 product.category === 'Shakes' ? createCard(product, linkPrefix) : null;
+//             });
+//             break;
+//         case 'Desserts' :
+//             products.map( product => {
+//                 product.category === 'Desserts' ? createCard(product, linkPrefix) : null;
+//             });
+//             break;
+//         default :
+//             AllProducts(linkPrefix);
+//             break;
+//     }
+// }
 
 
 

@@ -1,0 +1,28 @@
+.featured .page-title {
+    margin-top: 0 !important;
+}
+
+.categories {
+    min-height: fit-content;
+}
+.categories-holder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.category {
+    background-color: white;
+    margin: 20px;
+    padding: 5px 30px;
+    border-radius: 10px;
+    color: var(--cool3);
+    width: fit-content;
+}
+
+.category-title {
+    margin-bottom: 0;
+}
+.category-subtitle {
+    margin-bottom: 50px;
+}

@@ -114,7 +114,7 @@ footer {
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    width: 100vw !important
+    /* width: 100vw !important; */
 }
 
 footer .logo {
@@ -224,10 +224,14 @@ footer hr {
 
 
 /* FEATURED PRODUCTS */
-.featured-products {
+.featured-products, 
+.all-products {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
-.featured-products .product-card {
+.featured-products .product-card,
+.all-products .product-card {
     margin: 0 20px;
+    margin-bottom: 80px;
 }

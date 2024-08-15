@@ -5,17 +5,6 @@
     --cool3: #051A0F;
     --cool4: #109C56;
     --cool5: #5E5E1C;
-
-    --primary-color: #333;
-    --secondary-color: #777;
-    --accent-color: #F96C53;
-    --background-color: #fff;
-    --hover-background: #f9f9f9;
-    --border-color: #e0e0e0;
-    --button-bg: #333;
-    --button-hover-bg: #F96C53;
-    --button-text-color: #fff;
-    --button-hover-text: #fff;
 }
 
 
@@ -40,10 +29,13 @@ a {
     display: flex;
     flex-direction: column;
 }
-/* .section.colored {
+.section.colored {
     background-color: var(--cool4);
     color: white;
-} */
+}
+.section.colored .page-title {
+    color: white;
+}
 
 .page-title {
     text-align: center;
