@@ -68,14 +68,6 @@
     <main>
 
         <section class="section product-info">
-            <!-- <h1 class="page-title left">Featured Products<hr></h1>
-            <div class="featured-products">
-                <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                        createCard2("featured-products", productDetails, root)
-                    });
-                </script>
-            </div>             -->
             <div class="product-card-big">
                 <div class="product-image-section">
                     <img src="../../../assets/images/hero.jpg" alt="Cordilleran Wooden Dining Table" class="product-image-big">
@@ -149,8 +141,8 @@
     <script>
         $(document).ready(function() {
             // Update the product image
-            // $('.product-image-big').attr('src', productDetails.productImage);
-            $('.this-product-image-big').attr('alt', productDetails.productName);
+            $('.product-image-big').attr('src', root+"assets/images/products/"+productDetails.productId+".jpg");
+            // $('.this-product-image-big').attr('alt', productDetails.productName);
 
             // Update the product name
             $('.this-product-name').text(productDetails.productName);

@@ -87,12 +87,12 @@ button.card-btn:hover {
 }
 
 .width-full {
-    width: 100%;
+    width: 100% !important ;
 }
 .width-half {
-    width: 50%;
+    width: 50% !important ;
 }
 .width-third {
-    width: 33%;
+    width: 33% !important  ;
 }
 

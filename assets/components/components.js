@@ -1,6 +1,6 @@
 const logoLink = "assets/images/logo.png";
 const webtitle = "WOODCRAFTIFY";
-const imgSrc = "assets/images/";
+const imgSrc = "assets/images/products/";
 
 const Navbar = (targetTagId, linkPrefix) => {
     
@@ -133,7 +133,7 @@ const createCard2 = (targetTagId, product, linkPrefix) => {
     // Create image holder
     const $imageHolder = $('<div>', { class: 'product-image-holder' });
     const $image = $('<img>', {
-        // src: linkPrefix+imgSrc+product.productId,        
+        // src: linkPrefix+imgSrc+product.productId+".jpg",        
         src: linkPrefix+"assets/images/hero.jpg",
         alt: product.productName,
         class: 'product-image'
@@ -201,13 +201,78 @@ const createCard2 = (targetTagId, product, linkPrefix) => {
 
 
 
+
+const createCardBrief = (targetTagId, product, linkPrefix) => {
+    // Create card container
+    const $card = $('<div>', { class: 'product-card brief' });
+
+    // Create image holder
+    const $imageHolder = $('<div>', { class: 'product-image-holder' });
+    const $image = $('<img>', {
+        // src: linkPrefix+imgSrc+product.productId+".jpg",        
+        src: linkPrefix+"assets/images/hero.jpg",
+        alt: product.productName,
+        class: 'product-image'
+    });
+    $imageHolder.append($image);
+
+    // Create product details container
+    const $details = $('<div>', { class: 'product-details' });
+
+    // Create product name
+    const $name = $('<h3>', { class: 'product-name', text: product.productName });
+    $details.append($name);
+
+    // Append details and CTA button to card
+    $card.append($imageHolder, $details);
+
+    // Append the card to the page (assuming you have a container with class 'product-container')
+    $('.'+targetTagId).append($card);
+
+     // Add click event to the card
+     $card.on('click', () => {
+        // Open the details page
+        window.location.href = `${linkPrefix}views/shop/product/index.html?productId=${product.productId}`;
+    });
+}
+
+
+
+
+
+ // Fetch product details based on productId
+ const fetchProductDetails = (productId) => { 
+    var productDetails;
+    products.map(product => {
+        if (product.productId === productId){
+            productDetails = product;
+        }
+    })    
+    console.log(productDetails);
+    return productDetails;
+};
+
 const FeaturedProducts2 = (targetTagId, linkPrefix) => {
-    featuredProducts.map( product => createCard2(targetTagId, product, linkPrefix));
+    featuredProducts.map( product => {
+        console.log(product);
+        const productDetails = fetchProductDetails(product);
+        console.log(productDetails);
+        createCard2(targetTagId, productDetails, linkPrefix)
+    });
 }
 
 const AllProducts = (targetTagId, linkPrefix) => {
     products.map( product => createCard2(targetTagId, product, linkPrefix));
 }
+
+const AllProductsBrief = (targetTagId, linkPrefix) => {
+    products.map( product => createCardBrief(targetTagId, product, linkPrefix));
+}
+
+
+
+
+
 
 
 
@@ -218,15 +283,6 @@ function getShopNameById(shopId) {
 }
 
 
- // Fetch product details based on productId
- const fetchProductDetails = (productId) => {    
-    products.map(product => {
-        if (product.productId === productId){
-            console.log(product);
-            return product;
-        }
-    })    
-};
 
 
 
