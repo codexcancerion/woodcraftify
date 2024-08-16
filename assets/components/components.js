@@ -257,6 +257,19 @@ const showCategory = (category, linkPrefix) => {
     })
   };
 
+  const showRelatedProducts = (targetTagId, category, linkPrefix) => {
+    $("."+targetTagId).empty();  // Clear existing product cards
+
+  
+      products.forEach(product => {
+        if (product.category === category) {
+            $(".category-title").text(category);
+          createCard2(targetTagId, product, linkPrefix);
+        }
+      });
+    
+  };
+
 
 
 // const showCategory = (category, linkPrefix) => {

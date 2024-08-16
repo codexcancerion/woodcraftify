@@ -225,13 +225,17 @@ footer hr {
 
 /* FEATURED PRODUCTS */
 .featured-products, 
-.all-products {
+.all-products,
+.related-products {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 .featured-products .product-card,
-.all-products .product-card {
+.all-products .product-card,
+.related-products .product-card {
     margin: 0 20px;
     margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
 }
