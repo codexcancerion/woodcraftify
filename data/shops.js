@@ -2,8 +2,8 @@ const shops = [
   {
     shopId: "S001",
     ownerId: "O001",
-    shopName: "WoodCrafts",
-    shopDescription: "Specializing in handcrafted wooden furniture and home decor.",
+    shopName: "Woodcraftify",
+    shopDescription: "Crafting Excellence, Preserving Traditions, Shaping the Future",
     shopLogo: "../assets/images/woodcrafts_logo.jpg",
     location: "Baguio City, Philippines",
     contactNumber: "+63 912 345 6789",

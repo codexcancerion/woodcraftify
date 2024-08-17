@@ -287,18 +287,25 @@ footer hr {
     text-align: center;
 }
 
-.product-card.plus-card .product-image-holder{
+
+
+.product-card.brief .product-name {
+    font-size: medium;
+    color: rgb(56, 56, 56);
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+.product-card.plus-card .product-details {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50% !important;
+    height: 100% !important;
+}
+.product-card.plus-card .product-details h3 {
+    text-align: center;
 }
 
-.product-card.plus-card .product-image-holder img{
-    height: 50%;
-    width: auto !important;
-    margin: auto;
-}
 
 
 
