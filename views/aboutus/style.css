@@ -1,0 +1,138 @@
+
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+
+
+.shop-info-section {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    /* background-color: var(--cool1); */
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.shop-logo-container {
+    flex: 1;
+    text-align: center;
+}
+
+.shop-logo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--cool4);
+}
+
+.shop-details-container {
+    flex: 2;
+    padding-left: 2rem;
+}
+
+.shop-name {
+    font-size: 2rem;
+    color: var(--cool4);
+    margin-bottom: 1rem;
+}
+
+.shop-description {
+    font-size: 1.2rem;
+    color: gray;
+    margin-bottom: 1rem;
+}
+
+.shop-location,
+.shop-contact,
+.shop-email {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.shop-location .material-icons,
+.shop-contact .material-icons,
+.shop-email .material-icons {
+    margin-right: 0.5rem;
+    color: var(--cool5);
+}
+
+.location-text,
+.contact-text,
+.email-text {
+    color: var(--cool3);
+}
+
+
+
+
+
+
+.about-content {
+    /* background-color: var(--cool1); */
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+.about-section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--cool4);
+    margin-bottom: 1rem;
+}
+
+.section-text {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.values-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.values-list li {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.team-member {
+    text-align: center;
+}
+
+.team-photo {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid var(--cool4);
+}
+
+.team-name {
+    font-size: 1.5rem;
+    color: var(--cool4);
+    margin-top: 1rem;
+}
+
+.team-role {
+    font-size: 1.1rem;
+    color: var(--cool5);
+    margin-top: 0.5rem;
+}

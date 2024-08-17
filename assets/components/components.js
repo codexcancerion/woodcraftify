@@ -1,4 +1,5 @@
-const logoLink = "assets/images/logo.png";
+const logoLink = "assets/images/craftify/logo2.png";
+const bnwLogoLink = "assets/images/craftify/logo-bnw.png";
 const webtitle = "WOODCRAFTIFY";
 const imgSrc = "assets/images/products/";
 
@@ -22,7 +23,7 @@ const Navbar = (targetTagId, linkPrefix) => {
 
     
     var aboutusLink = document.createElement('a');
-    aboutusLink.href = linkPrefix + 'views/aboutus.html';
+    aboutusLink.href = linkPrefix + 'views/aboutus/index.html';
     aboutusLink.innerHTML = '<div class="link"><i class="material-icons">contact_support</i> About Us</div>';
 
     // var locationLink = document.createElement('a');
@@ -94,32 +95,94 @@ const Navbar = (targetTagId, linkPrefix) => {
 
 
 
+// const Footer = (targetTagId, linkPrefix) => {
+//     var targetField = document.getElementById(targetTagId);
+    
+//     var img = document.createElement('img');
+//     img.classList.add("logo");
+//     img.src = linkPrefix+logoLink;
+    
+//     var footerSection1 = document.createElement('div');
+//     footerSection1.classList.add('footer-section');
+        
+//     footerSection1.appendChild(img);
+    
+//     var hr = document.createElement('hr');
+    
+//     var footerSection2 = document.createElement('div');
+//     footerSection2.classList.add('footer-section');
+    
+//     var p = document.createElement('p');
+//     p.innerHTML = '&copy; 2024 Woodcraftify. All rights reserved.';
+    
+//     footerSection2.appendChild(p);
+    
+//     // targetField.appendChild(img);
+//     targetField.appendChild(footerSection1);
+//     targetField.appendChild(hr);
+//     targetField.appendChild(footerSection2);
+// };
+
 const Footer = (targetTagId, linkPrefix) => {
     var targetField = document.getElementById(targetTagId);
-    
-    var img = document.createElement('img');
-    img.classList.add("logo");
-    img.src = linkPrefix+logoLink;
-    
+
+    // Create footer container
+    var footerContainer = document.createElement('div');
+    footerContainer.classList.add('footer-container');
+
+    // Create the first section (Logo and Company Info)
     var footerSection1 = document.createElement('div');
     footerSection1.classList.add('footer-section');
-        
+
+    var img = document.createElement('img');
+    img.classList.add('logo');
+    img.src = linkPrefix+bnwLogoLink; // Replace with actual path to logo
     footerSection1.appendChild(img);
-    
-    var hr = document.createElement('hr');
-    
+
+    var companyInfo = document.createElement('p');
+    companyInfo.innerHTML = '&copy; 2024 Woodcraftify. All rights reserved.<br><a href="https://codexcancerion.github.io/" class="codex">codexcancerion.github.io</a>';
+    footerSection1.appendChild(companyInfo);
+
+    // Create the second section (Quick Links)
     var footerSection2 = document.createElement('div');
     footerSection2.classList.add('footer-section');
-    
-    var p = document.createElement('p');
-    p.innerHTML = '&copy; 2024 Woodcraftify. All rights reserved.';
-    
-    footerSection2.appendChild(p);
-    
-    // targetField.appendChild(img);
-    targetField.appendChild(footerSection1);
-    targetField.appendChild(hr);
-    targetField.appendChild(footerSection2);
+
+    var quickLinksTitle = document.createElement('h3');
+    quickLinksTitle.innerText = 'Quick Links';
+    footerSection2.appendChild(quickLinksTitle);
+
+    var quickLinksList = document.createElement('ul');
+    quickLinksList.innerHTML = `
+        <li><a href="${linkPrefix}about-us.html">About Us</a></li>
+        <li><a href="${linkPrefix}contact-us.html">Contact Us</a></li>
+        <li><a href="${linkPrefix}shop.html">Shop</a></li>
+        <li><a href="${linkPrefix}privacy-policy.html">Privacy Policy</a></li>
+    `;
+    footerSection2.appendChild(quickLinksList);
+
+    // Create the third section (Contact Info)
+    var footerSection3 = document.createElement('div');
+    footerSection3.classList.add('footer-section');
+
+    var contactTitle = document.createElement('h3');
+    contactTitle.innerText = 'Contact Us';
+    footerSection3.appendChild(contactTitle);
+
+    var contactInfo = document.createElement('p');
+    contactInfo.innerHTML = `
+        <span class="material-icons">location_on</span> Baguio City, Philippines <br>
+        <span class="material-icons">call</span> +63 912 345 6789 <br>
+        <span class="material-icons">email</span> support@woodcraftify.com
+    `;
+    footerSection3.appendChild(contactInfo);
+
+    // Append sections to footer container
+    footerContainer.appendChild(footerSection1);
+    footerContainer.appendChild(footerSection2);
+    footerContainer.appendChild(footerSection3);
+
+    // Append footer container to target field
+    targetField.appendChild(footerContainer);
 };
 
 
