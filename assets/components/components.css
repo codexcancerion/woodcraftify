@@ -284,7 +284,23 @@ footer hr {
 .product-card .cta-button:hover {
     background-color: var(--cool4);
     color: var(--button-hover-text);
+    text-align: center;
 }
+
+.product-card.plus-card .product-image-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50% !important;
+}
+
+.product-card.plus-card .product-image-holder img{
+    height: 50%;
+    width: auto !important;
+    margin: auto;
+}
+
+
 
 
 

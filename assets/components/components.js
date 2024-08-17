@@ -153,10 +153,9 @@ const Footer = (targetTagId, linkPrefix) => {
 
     var quickLinksList = document.createElement('ul');
     quickLinksList.innerHTML = `
-        <li><a href="${linkPrefix}about-us.html">About Us</a></li>
-        <li><a href="${linkPrefix}contact-us.html">Contact Us</a></li>
-        <li><a href="${linkPrefix}shop.html">Shop</a></li>
-        <li><a href="${linkPrefix}privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="${linkPrefix}/views/aboutus/index.html">About Us</a></li>
+        <li><a href="${linkPrefix}/views/shop/index.html">Shop</a></li>
+        <li><a href="${linkPrefix}/views/dashboard/index.html">Dashboard</a></li>
     `;
     footerSection2.appendChild(quickLinksList);
 
