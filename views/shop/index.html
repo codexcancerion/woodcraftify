@@ -86,16 +86,20 @@
     
     <script>
         $(document).ready(function() {
-            
             categories.forEach(function(category) {
                 const categoryHtml = `
-                    <button class="category" onclick="showCategory('${category.categoryName}', '${root}')">
+                    <button class="category" style="display: none;" onclick="showCategory('${category.categoryName}', '${root}')">
                         <p class="label">${category.categoryName}</p>
-                    </div>
+                    </button>
                 `;
+                // Append the category to the categories holder
                 $(".categories-holder").append(categoryHtml);
+                
+                // Fade in the newly added category
+                $(".categories-holder .category:last").fadeIn();
             });
         });
+
     </script>
 </body>
 </html>
