@@ -1,0 +1,7 @@
+Debugging this error:
+warning: ignoring broken ref refs/desktop.ini
+
+1. Open git bash and navigate to git directory: cd woodcraftify/.git
+2. Find and delete desktop.ini files: find -name "desktop.ini" -delete
+3. Retry operation
+
