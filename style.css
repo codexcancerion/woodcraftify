@@ -72,11 +72,12 @@
 
 .img-holder {
     width: 80%;
-    height: 80%;
+    height: auto;
     /* background-color: antiquewhite; */
     /* background-image: url("../assets/images/hero.png"); */
     /* background-size: cover; */
-    /* border-radius: 20px; */
+    border-radius: 20px;
+    overflow: hidden;
 }
 .hero-img {
     width: 100%;

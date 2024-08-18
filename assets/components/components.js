@@ -195,8 +195,8 @@ const createCard2 = (targetTagId, product, linkPrefix) => {
     // Create image holder
     const $imageHolder = $('<div>', { class: 'product-image-holder' });
     const $image = $('<img>', {
-        // src: linkPrefix+imgSrc+product.productId+".jpg",        
-        src: linkPrefix+"assets/images/hero.jpg",
+        src: linkPrefix+imgSrc+product.productId+".jpg",        
+        // src: linkPrefix+"assets/images/hero.jpg",
         alt: product.productName,
         class: 'product-image'
     });
@@ -271,8 +271,8 @@ const createCardBrief = (targetTagId, product, linkPrefix) => {
     // Create image holder
     const $imageHolder = $('<div>', { class: 'product-image-holder' });
     const $image = $('<img>', {
-        // src: linkPrefix+imgSrc+product.productId+".jpg",        
-        src: linkPrefix+"assets/images/hero.jpg",
+        src: linkPrefix+imgSrc+product.productId+".jpg",        
+        // src: linkPrefix+"assets/images/hero.jpg",
         alt: product.productName,
         class: 'product-image'
     });
@@ -294,7 +294,7 @@ const createCardBrief = (targetTagId, product, linkPrefix) => {
      // Add click event to the card
      $card.on('click', () => {
         // Open the details page
-        window.location.href = `${linkPrefix}views/shop/product/index.html?productId=${product.productId}`;
+        window.location.href = `${linkPrefix}views/dashboard/products/product/index.html?productId=${product.productId}`;
     });
 }
 

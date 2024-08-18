@@ -4,6 +4,9 @@
 
 .categories {
     min-height: fit-content;
+    padding: 20px !important;
+    padding-bottom: 40px !important;
+    width: 100vw;
 }
 .categories-holder {
     width: 100%;
@@ -13,8 +16,8 @@
 }
 .category {
     background-color: white;
-    margin: 20px;
-    padding: 5px 30px;
+    margin: 10px;
+    padding: 3px 20px;
     border-radius: 10px;
     color: var(--cool3);
     width: fit-content;
