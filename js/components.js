@@ -26,7 +26,7 @@ const Navbar = (targetTagId, linkPrefix) => {
 
     
     var aboutusLink = document.createElement('a');
-    aboutusLink.href = linkPrefix + dashboard_route;
+    aboutusLink.href = linkPrefix + aboutus_route;
     aboutusLink.innerHTML = '<div class="link"><i class="material-icons">contact_support</i> About Us</div>';
 
     var newNav = document.createElement("nav");
