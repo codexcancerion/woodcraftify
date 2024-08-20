@@ -67,7 +67,7 @@ const categories = [
 ];
 
 
-const featuredProducts = ["P003", "P010", "P019"];
+const featuredProducts = ["P003", "P017", "P019"];
 
 const products = [
   {

@@ -75,10 +75,6 @@
                         <span></span>
                     </div>
             
-                    <div class="product-shop this-product-shop">
-                        <span class="material-icons">storefront</span>
-                        <span></span>
-                    </div>
             
                     <button class="cta-button-big">Buy Now</button>
                 </div>
@@ -90,9 +86,7 @@
             <h1 class="page-title left">Related Products<hr></h1>
             <div class="related-products">
                 <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                        showRelatedProducts("related-products", productDetails.category, root)
-                    });
+                    //  SCRIPTS HERE TRANSFERED BELOW
                 </script>
             </div>            
         </section>
@@ -162,9 +156,13 @@
             // Update the product category
             $('.this-product-category span').last().text('Category: ' + productDetails.category);
 
-            // Update the shop name
-            $('.this-product-shop span').last().text('Shop: ' + getShopNameById(productDetails.shopId) );
+
+            showRelatedProducts("related-products", productDetails.category, root);
+
         });
+
+        
+        
 
     </script>
 </body>
