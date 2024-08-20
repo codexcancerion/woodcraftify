@@ -4,60 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Woodcraftify</title>
-    <link rel="shortcut icon" href="../../../assets/images/craftify/logomark.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/craftify/logomark.png" type="image/x-icon">
 
     <!-- MATERIAL ICONS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- GOOGLE FONTS POPPINS -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- GLOBAL STYLES -->
-    <link rel="stylesheet" href="../../../assets/globals/globals.css">
-    <link rel="stylesheet" href="../../../assets/components/components.css">
+    <link rel="stylesheet" href="../../../css/globals.css">
+    <link rel="stylesheet" href="../../../css/components.css">
     <!-- PAGE STYLES -->
     <link rel="stylesheet" href="./style.css">
-    
+            
+    <!-- EXTERNAL SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../../js/data.js"></script>
+    <script src="../../../js/components.js"></script>
+</head>
+<body>    
     <!-- ROUTES -->
     <script>
         const root = "../../../";
-    </script>
-    
-    <!-- EXTERNAL SCRIPTS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../../../data/products.js"></script>
-    <script src="../../../data/users.js"></script>
-    <script src="../../../data/shops.js"></script>
-    <script src="../../../assets/globals/globals.js"></script>
-    <script src="../../../assets/components/components.js"></script>
-</head>
-<body>
-
-    <script>
-        // Function to get query parameter by name
-        const getQueryParam = (param) => {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        };
-        
-        var productDetails;
-        document.addEventListener('DOMContentLoaded', () => {
-            const productId = getQueryParam('productId');
-            if (productId) {
-                // product = fetchProductDetails(productId);
-                products.map(product => {
-                    if (product.productId === productId){
-                        console.log(product);
-                        productDetails = product;
-                    }
-                })  
-                console.log(productDetails);
-            } else {
-                window.location.href = root+"index.html";
-            }
-            console.log(productDetails);
-        });
-
     </script>
 
     <header id="header">
@@ -67,7 +35,6 @@
     </header>
 
     <main>
-
         <section class="section product-info">
             <div class="product-card-big">
                 <div class="product-image-section">
@@ -140,9 +107,34 @@
     </footer>
     
     <script>
+        // Function to get query parameter by name
+        const getQueryParam = (param) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        };
+        
+        var productDetails;
+        document.addEventListener('DOMContentLoaded', () => {
+            const productId = getQueryParam('productId');
+            if (productId) {
+                // product = fetchProductDetails(productId);
+                products.map(product => {
+                    if (product.productId === productId){
+                        console.log(product);
+                        productDetails = product;
+                    }
+                })  
+                console.log(productDetails);
+            } else {
+                window.location.href = root+"index.html";
+            }
+            console.log(productDetails);
+        });
+
+
         $(document).ready(function() {
             // Update the product image
-            $('.product-image-big').attr('src', root+"assets/images/products/"+productDetails.productId+".jpg");
+            $('.product-image-big').attr('src', root+"images/products/"+productDetails.productId+".jpg");
             // $('.this-product-image-big').attr('alt', productDetails.productName);
 
             // Update the product name

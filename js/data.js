@@ -1,3 +1,18 @@
+const shops = [
+  {
+    shopId: "S001",
+    ownerId: "O001",
+    shopName: "Woodcraftify",
+    shopDescription: "Crafting Excellence, Preserving Traditions, Shaping the Future",
+    shopLogo: "../assets/images/woodcrafts_logo.jpg",
+    location: "Baguio City, Philippines",
+    contactNumber: "+63 912 345 6789",
+    email: "contact@woodcrafts.ph",
+    dateCreated: "2024-06-15",
+    products: ["P001", "P003"]
+  }
+]
+
 const categories = [
   {
     categoryId: "C001",

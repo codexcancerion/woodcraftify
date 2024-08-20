@@ -1,56 +1,33 @@
-const logoLink = "assets/images/craftify/logo2.png";
-const bnwLogoLink = "assets/images/craftify/logo-bnw.png";
+const logoLink = "images/craftify/logo2.png";
+const bnwLogoLink = "images/craftify/logo-bnw.png";
 const webtitle = "WOODCRAFTIFY";
-const imgSrc = "assets/images/products/";
+const imgSrc = "images/products/";
 
-const Navbar = (targetTagId, linkPrefix) => {
-    
+// ROUTES
+const home_route = "index.html";
+const shop_route = "pages/shop/index.html";
+const shop_product_route = "pages/shop/product/index.html";
+const dashboard_route = "pages/dashboard/index.html";
+const dashboard_products_route = "pages/dashboard/products/index.html";
+const dashboard_products_product_route = "pages/dashboard/products/product/index.html";
+const aboutus_route = "pages/aboutus/index.html";
+
+const Navbar = (targetTagId, linkPrefix) => {    
     var targetField = document.getElementById(targetTagId);
     
     var homeLink = document.createElement('a');
-    homeLink.href = linkPrefix + 'index.html';
-    // homeLink.innerHTML = '<div class="logo-holder"><img src="'+linkPrefix+logoLink+'" class="logo"></img> <h3 class="">'+webtitle+'</h3></div>';
-    // homeLink.innerHTML = '<div class="logo-holder"><h3 class="">'+webtitle+'</h3></div>';    
+    homeLink.href = linkPrefix + home_route;
+    // homeLink.innerHTML = '<div class="logo-holder"><img src="'+linkPrefix+logoLink+'" class="logo"></img> <h3 class="">'+webtitle+'</h3></div>'; 
     homeLink.innerHTML = '<div class="logo-holder"><img src="'+linkPrefix+logoLink+'" class="logo"></img></div>';
 
-    var enterprise = document.createElement('a');
-    enterprise.href = linkPrefix + 'views/shop/index.html';
-    enterprise.innerHTML = '<div class="link contained"><i class="material-icons">store</i> Shop</div>';
-
-    // var productsLink = document.createElement('a');
-    // productsLink.href = linkPrefix + 'views/products.html';
-    // productsLink.innerHTML = '<div class="link"><i class="material-icons">category</i> Marketplace</div>';
+    var shop = document.createElement('a');
+    shop.href = linkPrefix + shop_route;
+    shop.innerHTML = '<div class="link contained"><i class="material-icons">store</i> Shop</div>';
 
     
     var aboutusLink = document.createElement('a');
-    aboutusLink.href = linkPrefix + 'views/aboutus/index.html';
+    aboutusLink.href = linkPrefix + dashboard_route;
     aboutusLink.innerHTML = '<div class="link"><i class="material-icons">contact_support</i> About Us</div>';
-
-    // var locationLink = document.createElement('a');
-    // locationLink.href = linkPrefix + 'pages/location.html';
-    // locationLink.innerHTML = '<div class="link">Our Location</div>';
-
-    // var contactLink = document.createElement('a');
-    // contactLink.href = linkPrefix + 'pages/contact.html';
-    // contactLink.innerHTML = '<div class="link">Contact Us</div>';
-
-    // var cartLink = document.createElement('a');
-    // cartLink.href = linkPrefix + 'pages/cart.html';
-    // // cartLink.innerHTML = '<div class="link">Cart</div>';
-    // cartLink.innerHTML = '<div class="link"><i class="material-icons">shopping_cart</i></div>';
-
-    // var dashboardLink = document.createElement('a');
-    // dashboardLink.href = linkPrefix + 'pages/dashboard.html';
-    // // dashboardLink.innerHTML = '<div class="link">Dashboard</div>';
-    // dashboardLink.innerHTML = '<div class="link"><i class="material-icons">account_circle</i></div>';
-
-    // var loginLink = document.createElement('a');
-    // loginLink.href = linkPrefix + 'pages/login.html';
-    // loginLink.innerHTML = '<div class="link">Login</div>';
-
-    // var registerLink = document.createElement('a');
-    // registerLink.href = linkPrefix + 'pages/register.html';
-    // registerLink.innerHTML = '<div class="link">Register</div>';
 
     var newNav = document.createElement("nav");
 
@@ -59,31 +36,15 @@ const Navbar = (targetTagId, linkPrefix) => {
     navLogo.classList.add("portion");
     navLogo.appendChild(homeLink);
 
-    const navLinks = document.createElement('div');
-    navLinks.classList.add("nav-links");
-    navLinks.classList.add("center");
-    navLinks.classList.add("portion");
-
     const rightLinks = document.createElement('div');
     rightLinks.classList.add("nav-links");
     rightLinks.classList.add("right");
     rightLinks.classList.add("portion");
 
-    // navLinks.appendChild(enterprise);
-    // navLinks.appendChild(productsLink);
-    // navLinks.appendChild(locationLink);
-    // navLinks.appendChild(contactLink);
-
-    // rightLinks.appendChild(productsLink);
-    rightLinks.appendChild(enterprise);
+    rightLinks.appendChild(shop);
     rightLinks.appendChild(aboutusLink);
-    // rightLinks.appendChild(loginLink);
-    // rightLinks.appendChild(registerLink);
-    // rightLinks.appendChild(cartLink);
-    // rightLinks.appendChild(dashboardLink);
 
     newNav.appendChild(navLogo);
-    newNav.appendChild(navLinks);
     newNav.appendChild(rightLinks);
 
     targetField.appendChild(newNav);
@@ -95,33 +56,6 @@ const Navbar = (targetTagId, linkPrefix) => {
 
 
 
-// const Footer = (targetTagId, linkPrefix) => {
-//     var targetField = document.getElementById(targetTagId);
-    
-//     var img = document.createElement('img');
-//     img.classList.add("logo");
-//     img.src = linkPrefix+logoLink;
-    
-//     var footerSection1 = document.createElement('div');
-//     footerSection1.classList.add('footer-section');
-        
-//     footerSection1.appendChild(img);
-    
-//     var hr = document.createElement('hr');
-    
-//     var footerSection2 = document.createElement('div');
-//     footerSection2.classList.add('footer-section');
-    
-//     var p = document.createElement('p');
-//     p.innerHTML = '&copy; 2024 Woodcraftify. All rights reserved.';
-    
-//     footerSection2.appendChild(p);
-    
-//     // targetField.appendChild(img);
-//     targetField.appendChild(footerSection1);
-//     targetField.appendChild(hr);
-//     targetField.appendChild(footerSection2);
-// };
 
 const Footer = (targetTagId, linkPrefix) => {
     var targetField = document.getElementById(targetTagId);
@@ -153,9 +87,9 @@ const Footer = (targetTagId, linkPrefix) => {
 
     var quickLinksList = document.createElement('ul');
     quickLinksList.innerHTML = `
-        <li><a href="${linkPrefix}/views/aboutus/index.html">About Us</a></li>
-        <li><a href="${linkPrefix}/views/shop/index.html">Shop</a></li>
-        <li><a href="${linkPrefix}/views/dashboard/index.html">Dashboard</a></li>
+        <li><a href="${linkPrefix+aboutus_route}">About Us</a></li>
+        <li><a href="${linkPrefix+shop_route}">Shop</a></li>
+        <li><a href="${linkPrefix+dashboard_route}">Dashboard</a></li>
     `;
     footerSection2.appendChild(quickLinksList);
 
@@ -188,7 +122,10 @@ const Footer = (targetTagId, linkPrefix) => {
 
 
 
-const createCard2 = (targetTagId, product, linkPrefix) => {
+
+
+
+const createCard = (targetTagId, product, linkPrefix) => {
     // Create card container
     const $card = $('<div>', { class: 'product-card' });
 
@@ -256,9 +193,11 @@ const createCard2 = (targetTagId, product, linkPrefix) => {
      // Add click event to the card
      $card.on('click', () => {
         // Open the details page
-        window.location.href = `${linkPrefix}views/shop/product/index.html?productId=${product.productId}`;
+        window.location.href = `${linkPrefix+shop_product_route}?productId=${product.productId}`;
     });
 }
+
+
 
 
 
@@ -294,7 +233,7 @@ const createCardBrief = (targetTagId, product, linkPrefix) => {
      // Add click event to the card
      $card.on('click', () => {
         // Open the details page
-        window.location.href = `${linkPrefix}views/dashboard/products/product/index.html?productId=${product.productId}`;
+        window.location.href = `${linkPrefix+dashboard_products_product_route}?productId=${product.productId}`;
     });
 }
 
@@ -314,17 +253,17 @@ const createCardBrief = (targetTagId, product, linkPrefix) => {
     return productDetails;
 };
 
-const FeaturedProducts2 = (targetTagId, linkPrefix) => {
+const FeaturedProducts = (targetTagId, linkPrefix) => {
     featuredProducts.map( product => {
         console.log(product);
         const productDetails = fetchProductDetails(product);
         console.log(productDetails);
-        createCard2(targetTagId, productDetails, linkPrefix)
+        createCard(targetTagId, productDetails, linkPrefix)
     });
 }
 
 const AllProducts = (targetTagId, linkPrefix) => {
-    products.map( product => createCard2(targetTagId, product, linkPrefix));
+    products.map( product => createCard(targetTagId, product, linkPrefix));
 }
 
 const AllProductsBrief = (targetTagId, linkPrefix) => {
@@ -332,23 +271,10 @@ const AllProductsBrief = (targetTagId, linkPrefix) => {
 }
 
 
-
-
-
-
-
-
-
 function getShopNameById(shopId) {
     const shop = shops.find(s => s.shopId === shopId);
     return shop ? shop.shopName : "Shop not found";
 }
-
-
-
-
-
-
 
 
 const showCategory = (category, linkPrefix) => {
@@ -363,7 +289,7 @@ const showCategory = (category, linkPrefix) => {
       products.forEach(product => {
         if (product.category === category) {
             $(".category-title").text(category);
-          createCard2("all-products", product, linkPrefix);
+          createCard("all-products", product, linkPrefix);
         }
       });
     }
@@ -375,64 +301,17 @@ const showCategory = (category, linkPrefix) => {
     })
   };
 
-  const showRelatedProducts = (targetTagId, category, linkPrefix) => {
+const showRelatedProducts = (targetTagId, category, linkPrefix) => {
     $("."+targetTagId).empty();  // Clear existing product cards
 
   
       products.forEach(product => {
         if (product.category === category) {
             $(".category-title").text(category);
-          createCard2(targetTagId, product, linkPrefix);
+          createCard(targetTagId, product, linkPrefix);
         }
       });
     
-  };
-
-
-
-// const showCategory = (category, linkPrefix) => {
-    
-//     Array.from(document.getElementsByClassName('card')).map(card => card.style.display = 'none');
-
-//     switch (category) {
-//         case 'All' :
-//             AllProducts(linkPrefix);
-//             break;
-//         case 'Coffee' :
-//             products.map( product => {
-//                 product.category === 'Coffee' ? createCard(product, linkPrefix) : null;
-//             });
-//             break;
-//         case 'Tea' :
-//             products.map( product => {
-//                 product.category === 'Tea' ? createCard(product, linkPrefix) : null;
-//             });
-//             break;
-//         case 'Pastry' :
-//             products.map( product => {
-//                 product.category === 'Pastry' ? createCard(product, linkPrefix) : null;
-//             });
-//             break;
-//         case 'Sandwiches' :
-//             products.map( product => {
-//                 product.category === 'Sandwiches' ? createCard(product, linkPrefix) : null;
-//             });
-//             break;
-//         case 'Shakes' :
-//             products.map( product => {
-//                 product.category === 'Shakes' ? createCard(product, linkPrefix) : null;
-//             });
-//             break;
-//         case 'Desserts' :
-//             products.map( product => {
-//                 product.category === 'Desserts' ? createCard(product, linkPrefix) : null;
-//             });
-//             break;
-//         default :
-//             AllProducts(linkPrefix);
-//             break;
-//     }
-// }
-
+ };
 
 

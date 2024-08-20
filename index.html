@@ -4,34 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Woodcraftify</title>
-    <link rel="shortcut icon" href="./assets/images/craftify/logomark.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/craftify/logomark.png" type="image/x-icon">
 
     <!-- MATERIAL ICONS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- GOOGLE FONTS POPPINS -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- GLOBAL STYLES -->
-    <link rel="stylesheet" href="./assets/globals/globals.css">
-    <link rel="stylesheet" href="./assets/components/components.css">
+    <link rel="stylesheet" href="./css/globals.css">
+    <link rel="stylesheet" href="./css/components.css">
     <!-- PAGE STYLES -->
     <link rel="stylesheet" href="./style.css">
-    
+            
+    <!-- EXTERNAL SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/data.js"></script>
+    <script src="./js/components.js"></script>
+</head>
+<body>    
     <!-- ROUTES -->
     <script>
         const root = "./";
     </script>
-    
-    <!-- EXTERNAL SCRIPTS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="./data/products.js"></script>
-    <script src="./data/users.js"></script>
-    <script src="./data/shops.js"></script>
-    <script src="./assets/globals/globals.js"></script>
-    <script src="./assets/components/components.js"></script>
-</head>
-<body>
+
     <header id="header">
         <script>
             Navbar("header", root);
@@ -60,7 +56,7 @@
             <h1 class="page-title left">Featured Products<hr></h1>
             <div class="featured-products">
                 <script>
-                    FeaturedProducts2("featured-products", root);
+                    FeaturedProducts("featured-products", root);
                 </script>
             </div>            
         </section>
@@ -75,17 +71,17 @@
             <h2 class="page-title">Why choose our products?</h2>
             <div class="values-holder">
                 <div class="value">
-                    <img class="value-img" src="./assets/images/craftify/quality.jpg" alt="">
+                    <img class="value-img" src="./images/craftify/quality.jpg" alt="">
                     <h2 class="value-title">Quality</h2>
                     <p class="tagline">Uncompromising quality, built to last.</p>
                 </div>
                 <div class="value">
-                    <img class="value-img" src="./assets/images/craftify/craftmanship.jpg" alt="">
+                    <img class="value-img" src="./images/craftify/craftmanship.jpg" alt="">
                     <h2 class="value-title">Craftmanship</h2>
                     <p class="tagline">Crafted with precision, designed with passion.</p>
                 </div>
                 <div class="value">
-                    <img class="value-img" src="./assets/images/craftify/artistry.jpg" alt="">
+                    <img class="value-img" src="./images/craftify/artistry.jpg" alt="">
                     <h2 class="value-title">Artistry</h2>
                     <p class="tagline">Every piece, a work of art.</p>
                 </div>
