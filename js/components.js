@@ -173,13 +173,6 @@ const createCard = (targetTagId, product, linkPrefix) => {
     });
     $details.append($materials);
 
-    // Create product tags
-    const $tags = $('<p>', { class: 'product-tags', text: `Tags: ${product.tags.join(', ')}` });
-    $details.append($tags);
-
-    // Create shop name
-    const $shopName = $('<p>', { class: 'shop-name', text: `Shop: ${getShopNameById(product.shopId)}` });
-    $details.append($shopName);
 
     // Create CTA button
     const $ctaButton = $('<button>', { class: 'cta-button', text: 'View Details' });

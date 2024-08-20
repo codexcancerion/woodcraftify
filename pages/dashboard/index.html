@@ -81,6 +81,39 @@
                         <label for="shop-email" class="input-label">Email Address</label>
                         <input id="shop-email" name="shop-email" type="email" class="input-field shop-email width-half">
                     </div>
+
+                    
+                    <!-- Our Story Section -->
+                    <div class="input-section">
+                        <label for="our-story" class="input-label">Our Story</label>
+                        <textarea id="our-story" name="our-story" class="input-field our-story width-full "></textarea>
+                    </div>
+
+
+
+                    <!-- Our Mission Section -->
+                    <div class="input-section">
+                        <label for="our-mission" class="input-label">Our Mission</label>
+                        <textarea id="our-mission" name="our-mission" class="input-field our-mission width-full "></textarea>
+                    </div>
+
+
+                    <!-- Shop Name Section -->
+                    <div class="input-section">
+                        <label for="our-values-1" class="input-label">Values</label>
+                        <input id="our-values-1" name="our-values-1" type="text" class="input-field our-values-1 width-third" placeholder="Value 1">
+                        <br>
+                        <textarea id="our-values-1-description" name="our-values-1-description" class="input-field our-values-1-description width-half " placeholder="Value 1 Description"></textarea>
+                        <br><br>
+                        <input id="our-values-2" name="our-values-2" type="text" class="input-field our-values-2 width-third" placeholder="Value 2">
+                        <br>
+                        <textarea id="our-values-2-description" name="our-values-2-description" class="input-field our-values-2-description width-half " placeholder="Value 2 Description"></textarea>
+                        <br><br>
+                        <input id="our-values-3" name="our-values-3" type="text" class="input-field our-values-3 width-third" placeholder="Value 3">
+                        <br>
+                        <textarea id="our-values-3-description" name="our-values-3-description" class="input-field our-values-3-description width-half " placeholder="Value 3 Description"></textarea>
+                    </div>
+
                         
                     <!-- Submit Button -->
                     <div class="submit-section">
@@ -122,8 +155,14 @@
             // Email
             $('#shop-email').val(shop.email);
 
-            // Products (Display as a comma-separated list)
-            $('#shop-products').val(shop.products.join(', '));
+            $('#our-story').val(shop.story);
+            $('#our-mission').val(shop.mission);
+            $('#our-values-1').val(values[0].valueName);
+            $('#our-values-1-description').val(values[0].description);
+            $('#our-values-2').val(values[1].valueName);
+            $('#our-values-2-description').val(values[1].description);
+            $('#our-values-3').val(values[2].valueName);
+            $('#our-values-3-description').val(values[2].description);
         });
 
     </script>

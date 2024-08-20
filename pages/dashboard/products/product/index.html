@@ -104,23 +104,16 @@
                         <input id="category" name="category" type="text" class="input-field category width-half">
                     </div>
 
-                    <!-- Tags -->
-                    <div class="input-section">
-                        <label for="tags" class="input-label">Tags</label>
-                        <input id="tags" name="tags" type="text" class="input-field tags width-half">
-                    </div>
 
-                    <!-- Date Added -->
-                    <div class="input-section">
-                        <label for="date-added" class="input-label">Date Added</label>
-                        <input id="date-added" name="date-added" type="date" class="input-field date-added width-half">
-                    </div>
 
 
                     
                     <!-- Submit Button -->
                     <div class="submit-section">
                         <button class="submit-button">Update Product Information</button>
+                    </div>
+                    <div class="delete-section">
+                        <button class="delete-button">Delete Product</button>
                     </div>
                 </div>
             </div>
@@ -165,14 +158,8 @@
                 $('#height').val(productDetails.dimensions.height);
                 $('#materials').val(productDetails.materials.join(', '));
                 $('#category').val(productDetails.category);
-                $('#tags').val(productDetails.tags.join(', '));
 
                 
-                // Convert dateAdded to the format YYYY-MM-DD
-                const formattedDate = new Date(productDetails.dateAdded).toISOString().split('T')[0];
-
-                // Set the value of the date input field
-                $('#date-added').val(formattedDate);
             } else {
                 $('#product-image').hide();
             }

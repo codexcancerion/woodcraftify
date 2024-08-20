@@ -65,10 +65,6 @@
                         </div>
                     </div>
             
-                    <div class="product-tags this-product-tags">
-                        <span class="material-icons">label</span>
-                        <span></span>
-                    </div>
             
                     <div class="product-category this-product-category">
                         <span class="material-icons">category</span>
@@ -150,8 +146,6 @@
             // Update the available quantity
             $('.this-product-quantity span').last().text('Available: ' + productDetails.availableQuantity);
 
-            // Update the product tags
-            $('.this-product-tags span').last().text('Tags: ' + productDetails.tags.join(', '));
 
             // Update the product category
             $('.this-product-category span').last().text('Category: ' + productDetails.category);
