@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woodcraftify</title>
+    <link rel="shortcut icon" href="../../images/craftify/logomark.png" type="image/x-icon">
+
+    <!-- MATERIAL ICONS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- GOOGLE FONTS POPPINS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- GLOBAL STYLES -->
+    <link rel="stylesheet" href="../../css/globals.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <!-- PAGE STYLES -->
+    <link rel="stylesheet" href="./style.css">
+            
+    <!-- EXTERNAL SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../js/data.js"></script>
+    <script src="../../js/components.js"></script>
+</head>
+<body>    
+    <!-- ROUTES -->
+    <script>
+        const root = "../../";
+    </script>
+
+    <header id="header">
+        <script>
+            Navbar("header", root);
+        </script>
+    </header>
+
+    <main>
+        <section class="dashboard-section">
+            <div class="left-navigation">
+                <ul class="links">
+                    <a href="./index.html"><li class="link selected">Shop</li></a>
+                    <a href="./products/index.html"><li class="link">Products</li></a>
+                </ul>
+            </div>
+            <div class="dashboard-container">
+                <div class="dashboard">
+                    <h1 class="dash-title">Shop Information</h1>
+            
+                    <!-- Shop Name Section -->
+                    <div class="input-section">
+                        <label for="shop-name" class="input-label">Shop Name</label>
+                        <input id="shop-name" name="shop-name" type="text" class="input-field shop-name width-third">
+                    </div>
+            
+                    <!-- Shop Description Section -->
+                    <div class="input-section">
+                        <label for="shop-description" class="input-label">Shop Description</label>
+                        <textarea id="shop-description" name="shop-description" class="input-field shop-description width-half "></textarea>
+                    </div>
+            
+                    <!-- Shop Logo Section -->
+                    <div class="input-section">
+                        <label for="shop-logo" class="input-label">Shop Logo</label>
+                        <input id="shop-logo" name="shop-logo" type="file" class="input-field shop-logo width-half">
+                    </div>
+            
+                    <!-- Location Section -->
+                    <div class="input-section">
+                        <label for="shop-location" class="input-label">Location</label>
+                        <input id="shop-location" name="shop-location" type="text" class="input-field shop-location width-half">
+                    </div>
+            
+                    <!-- Contact Number Section -->
+                    <div class="input-section">
+                        <label for="shop-contact" class="input-label">Contact Number</label>
+                        <input id="shop-contact" name="shop-contact" type="tel" class="input-field shop-contact width-half">
+                    </div>
+            
+                    <!-- Email Section -->
+                    <div class="input-section">
+                        <label for="shop-email" class="input-label">Email Address</label>
+                        <input id="shop-email" name="shop-email" type="email" class="input-field shop-email width-half">
+                    </div>
+
+                    
+                    <!-- Our Story Section -->
+                    <div class="input-section">
+                        <label for="our-story" class="input-label">Our Story</label>
+                        <textarea id="our-story" name="our-story" class="input-field our-story width-full "></textarea>
+                    </div>
+
+
+
+                    <!-- Our Mission Section -->
+                    <div class="input-section">
+                        <label for="our-mission" class="input-label">Our Mission</label>
+                        <textarea id="our-mission" name="our-mission" class="input-field our-mission width-full "></textarea>
+                    </div>
+
+
+                    <!-- Shop Name Section -->
+                    <div class="input-section">
+                        <label for="our-values-1" class="input-label">Values</label>
+                        <input id="our-values-1" name="our-values-1" type="text" class="input-field our-values-1 width-third" placeholder="Value 1">
+                        <br>
+                        <textarea id="our-values-1-description" name="our-values-1-description" class="input-field our-values-1-description width-half " placeholder="Value 1 Description"></textarea>
+                        <br><br>
+                        <input id="our-values-2" name="our-values-2" type="text" class="input-field our-values-2 width-third" placeholder="Value 2">
+                        <br>
+                        <textarea id="our-values-2-description" name="our-values-2-description" class="input-field our-values-2-description width-half " placeholder="Value 2 Description"></textarea>
+                        <br><br>
+                        <input id="our-values-3" name="our-values-3" type="text" class="input-field our-values-3 width-third" placeholder="Value 3">
+                        <br>
+                        <textarea id="our-values-3-description" name="our-values-3-description" class="input-field our-values-3-description width-half " placeholder="Value 3 Description"></textarea>
+                    </div>
+
+                        
+                    <!-- Submit Button -->
+                    <div class="submit-section">
+                        <button class="submit-button">Update Shop Information</button>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+
+    </main>
+    
+    <footer id="footer">
+        <script>
+            Footer('footer', root);
+        </script>
+    </footer>
+    
+    <script>
+        // Sample shop object
+        const shop = shops[0];
+
+        // Populate fields with shop object values
+        $(document).ready(function() {
+            // Shop Name
+            $('#shop-name').val(shop.shopName);
+
+            // Shop Description
+            $('#shop-description').val(shop.shopDescription);
+
+
+            // Location
+            $('#shop-location').val(shop.location);
+
+            // Contact Number
+            $('#shop-contact').val(shop.contactNumber);
+
+            // Email
+            $('#shop-email').val(shop.email);
+
+            $('#our-story').val(shop.story);
+            $('#our-mission').val(shop.mission);
+            $('#our-values-1').val(values[0].valueName);
+            $('#our-values-1-description').val(values[0].description);
+            $('#our-values-2').val(values[1].valueName);
+            $('#our-values-2-description').val(values[1].description);
+            $('#our-values-3').val(values[2].valueName);
+            $('#our-values-3-description').val(values[2].description);
+        });
+
+    </script>
+</body>
+</html>

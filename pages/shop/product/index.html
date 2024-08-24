@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woodcraftify</title>
+    <link rel="shortcut icon" href="../../../images/craftify/logomark.png" type="image/x-icon">
+
+    <!-- MATERIAL ICONS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- GOOGLE FONTS POPPINS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- GLOBAL STYLES -->
+    <link rel="stylesheet" href="../../../css/globals.css">
+    <link rel="stylesheet" href="../../../css/components.css">
+    <!-- PAGE STYLES -->
+    <link rel="stylesheet" href="./style.css">
+            
+    <!-- EXTERNAL SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../../js/data.js"></script>
+    <script src="../../../js/components.js"></script>
+</head>
+<body>    
+    <!-- ROUTES -->
+    <script>
+        const root = "../../../";
+    </script>
+
+    <header id="header">
+        <script>
+            Navbar("header", root);
+        </script>
+    </header>
+
+    <main>
+        <section class="section product-info">
+            <div class="product-card-big">
+                <div class="product-image-section">
+                    <img src="../../../assets/images/hero.jpg" alt="Cordilleran Wooden Dining Table" class="product-image-big">
+                </div>
+                <div class="product-info-section">
+                    <h1 class="product-name this-product-name"></h1>
+                    <p class="product-description this-product-description">
+                        <span class="material-icons">info</span>
+                    </p>
+            
+                    <div class="product-details">
+                        <div class="product-price this-product-price">
+                            <span class="material-icons">sell</span>
+                            <span></span>
+                        </div>
+                        <div class="product-dimensions this-product-dimensions">
+                            <span class="material-icons">straighten</span>
+                            <span></span>
+                        </div>
+                        <div class="product-materials this-product-materials">
+                            <span class="material-icons">grass</span>
+                            <span></span>
+                        </div>
+                        <div class="product-quantity this-product-quantity">
+                            <span class="material-icons">inventory</span>
+                            <span></span>
+                        </div>
+                    </div>
+            
+            
+                    <div class="product-category this-product-category">
+                        <span class="material-icons">category</span>
+                        <span></span>
+                    </div>
+            
+            
+                    <button class="cta-button-big">Buy Now</button>
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="section featured">
+            <h1 class="page-title left">Related Products<hr></h1>
+            <div class="related-products">
+                <script>
+                    //  SCRIPTS HERE TRANSFERED BELOW
+                </script>
+            </div>            
+        </section>
+
+
+    </main>
+    
+    <footer id="footer">
+        <script>
+            Footer('footer', root);
+        </script>
+    </footer>
+    
+    <script>
+        // Function to get query parameter by name
+        const getQueryParam = (param) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        };
+        
+        var productDetails;
+        document.addEventListener('DOMContentLoaded', () => {
+            const productId = getQueryParam('productId');
+            if (productId) {
+                // product = fetchProductDetails(productId);
+                products.map(product => {
+                    if (product.productId === productId){
+                        console.log(product);
+                        productDetails = product;
+                    }
+                })  
+                console.log(productDetails);
+            } else {
+                window.location.href = root+"index.html";
+            }
+            console.log(productDetails);
+        });
+
+
+        $(document).ready(function() {
+            // Update the product image
+            $('.product-image-big').attr('src', root+"images/products/"+productDetails.productId+".jpg");
+            // $('.this-product-image-big').attr('alt', productDetails.productName);
+
+            // Update the product name
+            $('.this-product-name').text(productDetails.productName);
+
+            // Update the product description
+            $('.this-product-description').html('<span class="material-icons">info</span>' + productDetails.productDescription);
+
+            // Update the product price
+            $('.this-product-price span').last().html('<strong>P ' + productDetails.price.toLocaleString() + '</strong>');
+
+            // Update the product dimensions
+            const dimensionsText = `Dimensions: ${productDetails.dimensions.length} x ${productDetails.dimensions.width} x ${productDetails.dimensions.height} cm`;
+            $('.this-product-dimensions span').last().text(dimensionsText);
+
+            // Update the product materials
+            $('.this-product-materials span').last().text('Materials: ' + productDetails.materials.join(', '));
+
+            // Update the available quantity
+            $('.this-product-quantity span').last().text('Available: ' + productDetails.availableQuantity);
+
+
+            // Update the product category
+            $('.this-product-category span').last().text('Category: ' + productDetails.category);
+
+
+            showRelatedProducts("related-products", productDetails.category, root);
+
+        });
+
+        
+        
+
+    </script>
+</body>
+</html>

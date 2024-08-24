@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woodcraftify</title>
+    <link rel="shortcut icon" href="../../../../images/craftify/logomark.png" type="image/x-icon">
+
+    <!-- MATERIAL ICONS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- GOOGLE FONTS POPPINS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- GLOBAL STYLES -->
+    <link rel="stylesheet" href="../../../../css/globals.css">
+    <link rel="stylesheet" href="../../../../css/components.css">
+    <!-- PAGE STYLES -->
+    <link rel="stylesheet" href="./style.css">
+            
+    <!-- EXTERNAL SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../../../js/data.js"></script>
+    <script src="../../../../js/components.js"></script>
+</head>
+<body>    
+    <!-- ROUTES -->
+    <script>
+        const root = "../../../../";
+    </script>
+    <header id="header">
+        <script>
+            Navbar("header", root);
+        </script>
+    </header>
+
+    <main>
+        <section class="dashboard-section">
+            <div class="left-navigation">
+                <ul class="links">
+                    <a href="../../index.html"><li class="link">Shop</li></a>
+                    <a href="../index.html"><li class="link selected">Products</li></a>
+                </ul>
+            </div>
+            <div class="dashboard-container">
+                <div class="dashboard">
+                    <h1 class="dash-title">Product Information</h1>
+                    
+                    <!-- Product Image -->
+                    <div class="input-section">
+                        <label for="" class="input-label">Product Image</label>
+                        <img id="product-image" src="" alt="Product Image" class="product-image-dashboard">
+                        <br>
+                        <input id="product-image-upload" name="product-image-upload" type="file" class="input-field product-image-upload width-half">
+                    </div>
+
+                    <!-- Product Name -->
+                    <div class="input-section">
+                        <label for="product-name" class="input-label">Product Name</label>
+                        <input id="product-name" name="product-name" type="text" class="input-field product-name width-half">
+                    </div>
+
+                    <!-- Product Description -->
+                    <div class="input-section">
+                        <label for="product-description" class="input-label">Product Description</label>
+                        <textarea id="product-description" name="product-description" class="input-field product-description"></textarea>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="input-section">
+                        <label for="product-price" class="input-label">Price (PHP)</label>
+                        <input id="product-price" name="product-price" type="number" class="input-field product-price width-half">
+                    </div>
+
+                    <!-- Available Quantity -->
+                    <div class="input-section">
+                        <label for="available-quantity" class="input-label">Available Quantity</label>
+                        <input id="available-quantity" name="available-quantity" type="number" class="width-half input-field available-quantity">
+                    </div>
+
+                    <!-- Dimensions -->
+                    <div class="input-section">
+                        <label for="dimensions" class="input-label">Dimensions (L x W x H) (cm)</label>
+                        
+                        <!-- Length Input -->
+                        <input id="length" name="length" type="number" class="input-field dimensions width-quarter" placeholder="Length (cm)">
+                        
+                        <!-- Width Input -->
+                        <input id="width" name="width" type="number" class="input-field dimensions width-quarter" placeholder="Width (cm)">
+                        
+                        <!-- Height Input -->
+                        <input id="height" name="height" type="number" class="input-field dimensions width-quarter" placeholder="Height (cm)">
+                    </div>
+
+
+                    <!-- Materials -->
+                    <div class="input-section">
+                        <label for="materials" class="input-label">Materials</label>
+                        <input id="materials" name="materials" type="text" class="input-field materials width-half">
+                    </div>
+
+                    <!-- Category -->
+                    <div class="input-section">
+                        <label for="category" class="input-label">Category</label>
+                        <input id="category" name="category" type="text" class="input-field category width-half">
+                    </div>
+
+
+
+
+                    
+                    <!-- Submit Button -->
+                    <div class="submit-section">
+                        <button class="submit-button">Update Product Information</button>
+                    </div>
+                    <div class="delete-section">
+                        <button class="delete-button">Delete Product</button>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </main>
+    
+    <footer id="footer">
+        <script>
+            Footer('footer', root);
+        </script>
+    </footer>
+    
+    <script>
+        // Function to get query parameter by name
+        const getQueryParam = (param) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        };
+        
+        var productDetails;
+        document.addEventListener('DOMContentLoaded', () => {
+            const productId = getQueryParam('productId');
+            if (productId) {
+                products.map(product => {
+                    if (product.productId === productId){
+                        productDetails = product;
+                    }
+                })  
+            }
+
+            // Populate fields with product details
+            if (productDetails) {
+                $('.dash-title').text(productDetails.productName);
+                $('#product-image').attr('src', root + 'images/products/' + productDetails.productId +".jpg");
+                $('#product-name').val(productDetails.productName);
+                $('#product-description').val(productDetails.productDescription);
+                $('#product-price').val(productDetails.price);
+                $('#available-quantity').val(productDetails.availableQuantity);
+                $('#length').val(productDetails.dimensions.length);
+                $('#width').val(productDetails.dimensions.width);
+                $('#height').val(productDetails.dimensions.height);
+                $('#materials').val(productDetails.materials.join(', '));
+                $('#category').val(productDetails.category);
+
+                
+            } else {
+                $('#product-image').hide();
+            }
+        });
+    </script>
+</body>
+</html>
