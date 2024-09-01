@@ -1,43 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Woodcraftify</title>
-    <link rel="shortcut icon" href="../../images/craftify/logomark.png" type="image/x-icon">
+<?php
+    $root = "../../";
+    require_once $root.'php/WoodcraftifyDatabase.php';
+    include $root.'php/data.php';
+    include $root.'php/components.php';
+    include $root.'php/templates/templates.php';
 
-    <!-- MATERIAL ICONS -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- GOOGLE FONTS POPPINS -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-    <!-- GLOBAL STYLES -->
-    <link rel="stylesheet" href="../../css/globals.css">
-    <link rel="stylesheet" href="../../css/components.css">
-    <!-- PAGE STYLES -->
-    <link rel="stylesheet" href="./style.css">
-            
-    <!-- EXTERNAL SCRIPTS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../../js/data.js"></script>
-    <script src="../../js/components.js"></script>
-</head>
-<body>    
-    <!-- ROUTES -->
-    <script>
-        const root = "../../";
-    </script>
+    // find db connection on './php/components.php'
+    $db = generateDBObject();
+?>   
     
-    <header id="header">
-        <script>
-            Navbar("header", root);
-        </script>
-    </header>
+<!-- JS ROUTES -->
+<script> const root = "../../"; </script>
+
+<?php
+    renderHeaders($root);
+    renderNavbar($root);
+?>
 
     <main>
-
         <div class="about-container">
-
             <section class="shop-info-section">
                 <div class="shop-logo-container">
                     <img src="" alt="Shop Logo" class="shop-logo">
@@ -67,14 +48,14 @@
             
             <div class="division">
                 <h1 class="division-title">About Us</h1>
-                <p class="division-tagline">Crafting Excellence, Preserving Traditions, Shaping the Future</p>
+                <p class="division-tagline about-us">Crafting Excellence, Preserving Traditions, Shaping the Future</p>
             </div>
             
 
             <div class="about-content">
                 <section class="about-section">
                     <h2 class="section-title">Our Story</h2>
-                    <p class="section-text">
+                    <p class="section-text story">
                         WoodCraftify is a homegrown brand dedicated to preserving the rich heritage of Cordilleran craftsmanship. 
                         With every piece we create, we tell a story of tradition, sustainability, and unparalleled quality. Our journey 
                         began with a vision to connect skilled artisans with clients who appreciate the art of woodworking.
@@ -83,7 +64,7 @@
 
                 <section class="about-section">
                     <h2 class="section-title">Our Mission</h2>
-                    <p class="section-text">
+                    <p class="section-text mission">
                         Our mission is to craft furniture and decor that embody authenticity and sustainability, while honoring the 
                         cultural heritage of the Cordilleras. We strive to deliver products that are not only beautiful but also 
                         functional and durable.
@@ -93,9 +74,9 @@
                 <section class="about-section">
                     <h2 class="section-title">Our Values</h2>
                     <ul class="values-list">
-                        <li><strong>Quality:</strong> We deliver products that stand the test of time.</li>
-                        <li><strong>Craftsmanship:</strong> Every detail is carefully crafted by skilled artisans.</li>
-                        <li><strong>Artistry:</strong> Every piece, a work of art.</li>
+                        <li><strong><span id="value1"></span>:</strong> <span id="value1-desc"></span></li>
+                        <li><strong><span id="value2"></span>:</strong> <span id="value2-desc"></span></li>
+                        <li><strong><span id="value3"></span>:</strong> <span id="value3-desc"></span></li>
                     </ul>
                 </section>
 
@@ -105,42 +86,48 @@
 
     </main>
     
-    <footer id="footer">
-        <script>
-            Footer('footer', root);
-        </script>
-    </footer>
+    
 
     
     
     <script>
-        // Sample shop object
-        const shop = shops[0];
 
         // Populate fields with shop object values
         $(document).ready(function() {
             // Shop Name
             // $('.shop-logo').attr({src: root+"assets/images/woodcraftify/shop.jpg"});
-            $('.shop-logo').attr({src: root+"images//craftify/logomark.png"});
+            $('.shop-logo').attr({src: root+"images//craftify/woodcraftify_logomark.png"});
 
             // Shop Name
-            $('.shop-name').text(shop.shopName);
+            $('.shop-name').text(shop[0].shopName);
 
             // Shop Description
             // $('.shop-description').text(shop.shopDescription);
-            $('.division-tagline').text(shop.shopDescription);
+            $('.division-tagline').text(shop[0].shopDescription);
 
 
             // Location
-            $('.shop-location span').last().text(shop.location);
+            $('.shop-location').text(shop[0].location);
 
             // Contact Number
-            $('.shop-contact span').last().text(shop.contactNumber);
+            $('.shop-contact').text(shop[0].contactNumber);
 
             // Email
-            $('.shop-email span').last().text(shop.email);
+            $('.shop-email').text(shop[0].email);
+            
+            $('.story').text(shop[0].story);
+            $('.mission').text(shop[0].mission);
+
+            $('#value1').text(values[0].valueName);
+            $('#value2').text(values[1].valueName);
+            $('#value3').text(values[2].valueName);
+            $('#value1-desc').text(values[0].description);
+            $('#value2-desc').text(values[1].description);
+            $('#value3-desc').text(values[2].description);
 
         });
     </script>
-</body>
-</html>
+<?php
+    renderfooter($root);
+    renderends($root);
+?> 

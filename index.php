@@ -1,44 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Woodcraftify</title>
-    <link rel="shortcut icon" href="./images/craftify/logomark.png" type="image/x-icon">
+<?php
+    $root = "./";
+    require_once $root.'php/WoodcraftifyDatabase.php';
+    include $root.'php/data.php';
+    include $root.'php/components.php';
+    include $root.'php/templates/templates.php';
 
-    <!-- MATERIAL ICONS -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- GOOGLE FONTS POPPINS -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    // find db connection on './php/components.php'
+    $db = generateDBObject();
+?>
 
-    <!-- GLOBAL STYLES -->
-    <link rel="stylesheet" href="./css/globals.css">
-    <link rel="stylesheet" href="./css/components.css">
-    <!-- PAGE STYLES -->
-    <link rel="stylesheet" href="./style.css">
-            
-    <!-- EXTERNAL SCRIPTS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="./js/data.js"></script>
-    <script src="./js/components.js"></script>
-</head>
-<body>    
-    <!-- ROUTES -->
-    <script>
-        const root = "./";
-    </script>
+<!-- JS ROUTES -->
+<script> const root = "./"; </script>
 
-    <header id="header">
-        <script>
-            Navbar("header", root);
-        </script>
-    </header>
-
+<?php
+    renderHeaders($root);
+    renderNavbar($root);
+?> 
     <main>
         <section class="hero">
             <div class="title-section">
-                <h1 class="hero-title">Furnish your homes like a <span class="colored">MASTER</span></h1>
-                <p class="hero-subtitle">In Woodcraftify, we help you furnish your homes with quality crafts and furnitures.</p>
+                <h1 class="hero-title"><span class="heroLine"></span> <span class="colored heroLineHighlight"></span></h1>
+                <p class="hero-subtitle"></p>
                 <a href="./pages/shop/index.html"><div class="hero-button">Explore Products <i class="material-icons">arrow_right</i> </div></a>
             </div>
             <div class="img-section">
@@ -55,6 +37,7 @@
             <h1 class="page-title left">Featured Products<hr></h1>
             <div class="featured-products">
                 <script>
+                    // console.log(products);  
                     FeaturedProducts("featured-products", root);
                 </script>
             </div>            
@@ -71,29 +54,37 @@
             <div class="values-holder">
                 <div class="value">
                     <img class="value-img" src="./images/craftify/quality.jpg" alt="">
-                    <h2 class="value-title">Quality</h2>
-                    <p class="tagline">Uncompromising quality, built to last.</p>
+                    <h2 class="value-title value1"></h2>
+                    <p class="tagline value1desc"></p>
                 </div>
                 <div class="value">
                     <img class="value-img" src="./images/craftify/craftmanship.jpg" alt="">
-                    <h2 class="value-title">Craftmanship</h2>
-                    <p class="tagline">Crafted with precision, designed with passion.</p>
+                    <h2 class="value-title value2"></h2>
+                    <p class="tagline value2desc"></p>
                 </div>
                 <div class="value">
                     <img class="value-img" src="./images/craftify/artistry.jpg" alt="">
-                    <h2 class="value-title">Artistry</h2>
-                    <p class="tagline">Every piece, a work of art.</p>
+                    <h2 class="value-title value3"></h2>
+                    <p class="tagline value3desc"></p>
                 </div>
             </div>
         </section>
 
     </main>
     
-    <footer id="footer">
-        <script>
-            Footer('footer', root);
-        </script>
-    </footer>
-    
-</body>
-</html>
+<script>
+    // console.log(shop[0]);
+    $(".heroLine").text(shop[0].heroLine);
+    $(".heroLineHighlight").text(shop[0].heroLineHighlight);
+    $(".hero-subtitle").text(shop[0].heroDescription);
+    $(".value1").text(values[0].valueName);
+    $(".value2").text(values[1].valueName);
+    $(".value3").text(values[2].valueName);
+    $(".value1desc").text(values[0].description);
+    $(".value2desc").text(values[1].description);
+    $(".value3desc").text(values[2].description);
+</script>
+<?php
+    renderFooter($root);
+    renderEnds($root);
+?>  

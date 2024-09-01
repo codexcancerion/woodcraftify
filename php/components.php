@@ -1,54 +1,60 @@
+
+<script>
+
 const logoLink = "images/craftify/logo2.png";
 const bnwLogoLink = "images/craftify/logo-bnw.png";
 const webtitle = "WOODCRAFTIFY";
 const imgSrc = "images/products/";
 
 // ROUTES
-const home_route = "index.html";
-const shop_route = "pages/shop/index.html";
-const shop_product_route = "pages/shop/product/index.html";
-const dashboard_route = "pages/dashboard/index.html";
-const dashboard_products_route = "pages/dashboard/products/index.html";
-const dashboard_products_product_route = "pages/dashboard/products/product/index.html";
-const aboutus_route = "pages/aboutus/index.html";
+const home_route = "/";
+const shop_route = "pages/shop/";
+const shop_product_route = "pages/shop/product/";
+const dashboard_route = "pages/dashboard/";
+const dashboard_products_route = "pages/dashboard/products/";
+const dashboard_products_product_route = "pages/dashboard/products/product/";
+const dashboard_categories_route = "pages/dashboard/categories/";
+const dashboard_categories_category_route = "pages/dashboard/categories/category/";
+const aboutus_route = "pages/aboutus/";
 
-const Navbar = (targetTagId, linkPrefix) => {    
-    var targetField = document.getElementById(targetTagId);
+// NAVBAR HAS ALREADY BEEN TRANSFERED AT /php/templates
+// const Navbar = (targetTagId, linkPrefix) => {    
+//     var targetField = document.getElementById(targetTagId);
     
-    var homeLink = document.createElement('a');
-    homeLink.href = linkPrefix + home_route;
-    // homeLink.innerHTML = '<div class="logo-holder"><img src="'+linkPrefix+logoLink+'" class="logo"></img> <h3 class="">'+webtitle+'</h3></div>'; 
-    homeLink.innerHTML = '<div class="logo-holder"><img src="'+linkPrefix+logoLink+'" class="logo"></img></div>';
+//     var homeLink = document.createElement('a');
+//     homeLink.href = linkPrefix + home_route;
+//     // homeLink.innerHTML = '<div class="logo-holder"><img src="'+linkPrefix+logoLink+'" class="logo"></img> <h3 class="">'+webtitle+'</h3></div>'; 
+//     homeLink.innerHTML = '<div class="logo-holder"><img src="'+linkPrefix+logoLink+'" class="logo"></img></div>';
 
-    var shop = document.createElement('a');
-    shop.href = linkPrefix + shop_route;
-    shop.innerHTML = '<div class="link contained"><i class="material-icons">store</i> Shop</div>';
+//     var shop = document.createElement('a');
+//     shop.href = linkPrefix + shop_route;
+//     shop.innerHTML = '<div class="link contained"><i class="material-icons">store</i> Shop</div>';
 
     
-    var aboutusLink = document.createElement('a');
-    aboutusLink.href = linkPrefix + aboutus_route;
-    aboutusLink.innerHTML = '<div class="link"><i class="material-icons">contact_support</i> About Us</div>';
+//     var aboutusLink = document.createElement('a');
+//     aboutusLink.href = linkPrefix + aboutus_route;
+//     aboutusLink.innerHTML = '<div class="link"><i class="material-icons">contact_support</i> About Us</div>';
 
-    var newNav = document.createElement("nav");
+//     var newNav = document.createElement("nav");
 
-    const navLogo = document.createElement('div');
-    navLogo.classList.add("nav-logo");
-    navLogo.classList.add("portion");
-    navLogo.appendChild(homeLink);
+//     const navLogo = document.createElement('div');
+//     navLogo.classList.add("nav-logo");
+//     navLogo.classList.add("portion");
+//     navLogo.appendChild(homeLink);
 
-    const rightLinks = document.createElement('div');
-    rightLinks.classList.add("nav-links");
-    rightLinks.classList.add("right");
-    rightLinks.classList.add("portion");
+//     const rightLinks = document.createElement('div');
+//     rightLinks.classList.add("nav-links");
+//     rightLinks.classList.add("right");
+//     rightLinks.classList.add("portion");
 
-    rightLinks.appendChild(shop);
-    rightLinks.appendChild(aboutusLink);
+//     rightLinks.appendChild(shop);
+//     rightLinks.appendChild(aboutusLink);
 
-    newNav.appendChild(navLogo);
-    newNav.appendChild(rightLinks);
+//     newNav.appendChild(navLogo);
+//     newNav.appendChild(rightLinks);
 
-    targetField.appendChild(newNav);
-};
+//     targetField.appendChild(newNav);
+// };
 
 
 
@@ -126,13 +132,15 @@ const Footer = (targetTagId, linkPrefix) => {
 
 
 const createCard = (targetTagId, product, linkPrefix) => {
+    // console.log("CreateCard Received: " + product);
     // Create card container
     const $card = $('<div>', { class: 'product-card' });
 
     // Create image holder
     const $imageHolder = $('<div>', { class: 'product-image-holder' });
     const $image = $('<img>', {
-        src: linkPrefix+imgSrc+product.productId+".jpg",        
+        src: linkPrefix+imgSrc+product.productName+".jpg",  
+        // src: linkPrefix+imgSrc+product.productId+".jpg",        
         // src: linkPrefix+"assets/images/hero.jpg",
         alt: product.productName,
         class: 'product-image'
@@ -162,14 +170,14 @@ const createCard = (targetTagId, product, linkPrefix) => {
     // Create product dimensions
     const $dimensions = $('<p>', {
         class: 'product-dimensions',
-        text: `Dimensions: ${product.dimensions.length} x ${product.dimensions.width} x ${product.dimensions.height} cm`
+        text: `Dimensions: ${product.length} x ${product.width} x ${product.height} cm`
     });
     $details.append($dimensions);
 
     // Create product materials
     const $materials = $('<p>', {
         class: 'product-materials',
-        text: `Materials: ${product.materials.join(', ')}`
+        text: `Materials: ${product.materials}`
     });
     $details.append($materials);
 
@@ -203,7 +211,8 @@ const createCardBrief = (targetTagId, product, linkPrefix) => {
     // Create image holder
     const $imageHolder = $('<div>', { class: 'product-image-holder' });
     const $image = $('<img>', {
-        src: linkPrefix+imgSrc+product.productId+".jpg",        
+        src: linkPrefix+imgSrc+product.productImage+".jpg", 
+        // src: linkPrefix+imgSrc+product.productId+".jpg",        
         // src: linkPrefix+"assets/images/hero.jpg",
         alt: product.productName,
         class: 'product-image'
@@ -231,14 +240,49 @@ const createCardBrief = (targetTagId, product, linkPrefix) => {
 }
 
 
+const createCategoryBrief = (targetTagId, category, linkPrefix) => {
+    // Create card container
+    const $card = $('<div>', { class: 'category-card brief' });
+
+    // Create product details container
+    const $details = $('<div>', { class: 'category-details' });
+
+    // Create product name
+    const $name = $('<h3>', { class: 'category-name', text: category.categoryName });
+    $details.append($name);
+    // Create product name
+    const $description = $('<p>', { class: 'category-description', text: category.categoryDescription });
+    $details.append($description);
+
+    // Append details and CTA button to card
+    $card.append($details);
+
+    // Append the card to the page (assuming you have a container with class 'product-container')
+    $('.'+targetTagId).append($card);
+
+     // Add click event to the card
+     $card.on('click', () => {
+        // Open the details page
+        window.location.href = `${linkPrefix+dashboard_categories_category_route}?categoryName=${category.categoryName}`;
+    });
+}
+
+
+
 
 
 
  // Fetch product details based on productId
  const fetchProductDetails = (productId) => { 
+    // console.log("fetchProductDetails Received: " + productId);
+    // console.log(products);
     var productDetails;
     products.map(product => {
+        // console.log(product);
+        // console.log(product.productId);
+        // console.log(productId);
         if (product.productId === productId){
+            // console.log(product.productId);
             productDetails = product;
         }
     })    
@@ -248,9 +292,9 @@ const createCardBrief = (targetTagId, product, linkPrefix) => {
 
 const FeaturedProducts = (targetTagId, linkPrefix) => {
     featuredProducts.map( product => {
-        console.log(product);
-        const productDetails = fetchProductDetails(product);
-        console.log(productDetails);
+        // console.log(product);
+        const productDetails = fetchProductDetails(product.productId);
+        // console.log(productDetails);
         createCard(targetTagId, productDetails, linkPrefix)
     });
 }
@@ -261,6 +305,9 @@ const AllProducts = (targetTagId, linkPrefix) => {
 
 const AllProductsBrief = (targetTagId, linkPrefix) => {
     products.map( product => createCardBrief(targetTagId, product, linkPrefix));
+}
+const AllCategoriesBrief = (targetTagId, linkPrefix) => {
+    categories.map( category => createCategoryBrief(targetTagId, category, linkPrefix));
 }
 
 
@@ -308,3 +355,4 @@ const showRelatedProducts = (targetTagId, category, linkPrefix) => {
  };
 
 
+ </script>

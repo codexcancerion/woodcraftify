@@ -1,38 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Woodcraftify</title>
-    <link rel="shortcut icon" href="../../../images/craftify/logomark.png" type="image/x-icon">
+<?php
+    $root = "../../../";
+    require_once $root.'php/WoodcraftifyDatabase.php';
+    include $root.'php/data.php';
+    include $root.'php/components.php';
+    include $root.'php/templates/templates.php';
 
-    <!-- MATERIAL ICONS -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- GOOGLE FONTS POPPINS -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    // find db connection on './php/components.php'
+    $db = generateDBObject();
+?>   
+    
+<!-- JS ROUTES -->
+<script> const root = "../../../"; </script>
 
-    <!-- GLOBAL STYLES -->
-    <link rel="stylesheet" href="../../../css/globals.css">
-    <link rel="stylesheet" href="../../../css/components.css">
-    <!-- PAGE STYLES -->
-    <link rel="stylesheet" href="./style.css">
-            
-    <!-- EXTERNAL SCRIPTS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../../../js/data.js"></script>
-    <script src="../../../js/components.js"></script>
-</head>
-<body>    
-    <!-- ROUTES -->
-    <script>
-        const root = "../../../";
-    </script>
-
-    <header id="header">
-        <script>
-            Navbar("header", root);
-        </script>
-    </header>
+<?php
+    renderHeaders($root);
+    renderNavbar($root);
+?>
 
     <main>
         <section class="section product-info">
@@ -90,11 +73,7 @@
 
     </main>
     
-    <footer id="footer">
-        <script>
-            Footer('footer', root);
-        </script>
-    </footer>
+    
     
     <script>
         // Function to get query parameter by name
@@ -124,7 +103,7 @@
 
         $(document).ready(function() {
             // Update the product image
-            $('.product-image-big').attr('src', root+"images/products/"+productDetails.productId+".jpg");
+            $('.product-image-big').attr('src', root+"images/products/"+productDetails.productName+".jpg");
             // $('.this-product-image-big').attr('alt', productDetails.productName);
 
             // Update the product name
@@ -137,18 +116,24 @@
             $('.this-product-price span').last().html('<strong>P ' + productDetails.price.toLocaleString() + '</strong>');
 
             // Update the product dimensions
-            const dimensionsText = `Dimensions: ${productDetails.dimensions.length} x ${productDetails.dimensions.width} x ${productDetails.dimensions.height} cm`;
+            const dimensionsText = `Dimensions: ${productDetails.length} x ${productDetails.width} x ${productDetails.height} cm`;
             $('.this-product-dimensions span').last().text(dimensionsText);
 
             // Update the product materials
-            $('.this-product-materials span').last().text('Materials: ' + productDetails.materials.join(', '));
+            $('.this-product-materials span').last().text('Materials: ' + productDetails.materials);
 
             // Update the available quantity
             $('.this-product-quantity span').last().text('Available: ' + productDetails.availableQuantity);
 
+            var category;
+
+            categories.map(cat => {
+                if (cat.categoryId === productDetails.categoryId) category = cat.categoryName;
+            })
+            
 
             // Update the product category
-            $('.this-product-category span').last().text('Category: ' + productDetails.category);
+            $('.this-product-category span').last().text('Category: ' + category);
 
 
             showRelatedProducts("related-products", productDetails.category, root);
@@ -159,5 +144,7 @@
         
 
     </script>
-</body>
-</html>
+<?php
+    renderfooter($root);
+    renderends($root);
+?> 

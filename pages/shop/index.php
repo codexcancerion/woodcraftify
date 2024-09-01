@@ -1,39 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Woodcraftify</title>
-    <link rel="shortcut icon" href="../../images/craftify/logomark.png" type="image/x-icon">
+<?php
+    $root = "../../";
+    require_once $root.'php/WoodcraftifyDatabase.php';
+    include $root.'php/data.php';
+    include $root.'php/components.php';
+    include $root.'php/templates/templates.php';
 
-    <!-- MATERIAL ICONS -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- GOOGLE FONTS POPPINS -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    // find db connection on './php/components.php'
+    $db = generateDBObject();
+?>   
+    
+<!-- JS ROUTES -->
+<script> const root = "../../"; </script>
 
-    <!-- GLOBAL STYLES -->
-    <link rel="stylesheet" href="../../css/globals.css">
-    <link rel="stylesheet" href="../../css/components.css">
-    <!-- PAGE STYLES -->
-    <link rel="stylesheet" href="./style.css">
-            
-    <!-- EXTERNAL SCRIPTS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../../js/data.js"></script>
-    <script src="../../js/components.js"></script>
-</head>
-<body>    
-    <!-- ROUTES -->
-    <script>
-        const root = "../../";
-    </script>
-
-    <header id="header">
-        <script>
-            Navbar("header", root);
-        </script>
-    </header>
-
+<?php
+    renderHeaders($root);
+    renderNavbar($root);
+?>
+   
     <main>
         <section class="division-container">
             <div class="division">
@@ -74,11 +57,7 @@
 
     </main>
     
-    <footer id="footer">
-        <script>
-            Footer('footer', root);
-        </script>
-    </footer>
+    
     
     <script>
         $(document).ready(function() {
@@ -97,5 +76,8 @@
 
         });
     </script>
-</body>
-</html>
+
+<?php
+    renderFooter($root);
+    renderEnds($root);
+?>  
