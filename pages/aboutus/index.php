@@ -96,7 +96,7 @@
         $(document).ready(function() {
             // Shop Name
             // $('.shop-logo').attr({src: root+"assets/images/woodcraftify/shop.jpg"});
-            $('.shop-logo').attr({src: root+"images//craftify/woodcraftify_logomark.png"});
+            $('.shop-logo').attr({src: root+"images/craftify/"+shop[0].logoMark});
 
             // Shop Name
             $('.shop-name').text(shop[0].shopName);
@@ -107,13 +107,13 @@
 
 
             // Location
-            $('.shop-location').text(shop[0].location);
+            $('.location-text').text(shop[0].location);
 
             // Contact Number
-            $('.shop-contact').text(shop[0].contactNumber);
+            $('.contact-text').text(shop[0].contactNumber);
 
             // Email
-            $('.shop-email').text(shop[0].email);
+            $('.email-text').text(shop[0].email);
             
             $('.story').text(shop[0].story);
             $('.mission').text(shop[0].mission);

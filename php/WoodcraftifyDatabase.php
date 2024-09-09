@@ -26,11 +26,22 @@ class WoodcraftifyDatabase {
     }
 
     // Method to upload a file and return the file path
-    public function uploadFile($file, $targetDir) {
-        $targetFile = $targetDir . basename($file['name']);
-        move_uploaded_file($file["tmp_name"], $targetFile);
-        return $targetFile;
+    public function uploadFile($file, $targetDir, $name) {
+        // Get the original file extension
+        $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
+    
+        // Set the target file path using the provided name and the original file extension
+        $newFileName = $name . '.' . $fileExtension;
+        $targetFile = $targetDir . $newFileName;
+    
+        // Move the uploaded file to the target directory with the new filename
+        if (move_uploaded_file($file["tmp_name"], $targetFile)) {
+            return $targetFile;
+        } else {
+            return false; // Return false if the file upload failed
+        }
     }
+    
 
     // Method to insert data into the shops table
     public function createShop($shopName, $shopDescription, $logoType, $logoMark, $location, $contactNumber, $email, $mission, $story, $heroLine, $heroLineHighlight, $heroDescription) {
@@ -197,6 +208,15 @@ class WoodcraftifyDatabase {
                         heroLine = '$heroLine',
                         heroLineHighlight = '$heroLineHighlight',
                         heroDescription = '$heroDescription'";
+            
+            return $this->executeQuery($sql);
+        }
+        public function updateShopImage(
+            $type, $value) {
+
+            // $shopLogoPath = $this->uploadFile($shopLogo, "uploads/");
+            $sql = "UPDATE shops SET 
+                        $type = '$value'";
             
             return $this->executeQuery($sql);
         }

@@ -4,7 +4,7 @@
 
 .categories {
     min-height: fit-content;
-    padding: 20px !important;
+    /* padding: 20px !important; */
     padding-bottom: 40px !important;
     width: 100vw;
 }
@@ -17,14 +17,16 @@
 .category {
     background-color: white;
     margin: 10px;
-    padding: 3px 20px;
+    padding: 7px 16px;
     border-radius: 10px;
-    color: var(--cool3);
+    color: var(--cool4);
     width: fit-content;
 }
-
+.category p {
+    margin-bottom: 0 !important;
+}
 .category-title {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
 .category-subtitle {
     margin-bottom: 50px;

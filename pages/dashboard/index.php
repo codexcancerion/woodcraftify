@@ -48,17 +48,27 @@
                     <!-- Shop Logo Section -->
                     <div class="input-section">
                         <label for="shop-logo-mark" class="input-label">Shop Logo Mark</label>
-                        <img id="shop-logo-mark" src="" alt="Product Image" class="shop-image-dashboard">
+                        <img id="shop-logo-mark-img" src="" alt="Product Image" class="shop-image-dashboard">
                         <br>
                         <input id="shop-logo-mark" name="shop-logo-mark" type="file" class="input-field shop-logo-mark width-half">
+                        <div class="image-actions">
+                            <div class="button-holder save-image">
+                                <button class="image-button save-logo-mark-button">Save Image</button>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Shop Logo Section -->
                     <div class="input-section">
                         <label for="shop-logo-type" class="input-label">Shop Logo Type</label>
-                        <img id="shop-logo-type" src="" alt="Product Image" class="shop-image-dashboard">
+                        <img id="shop-logo-type-img" src="" alt="Product Image" class="shop-image-dashboard">
                         <br>
                         <input id="shop-logo-type" name="shop-logo-type" type="file" class="input-field shop-logo-type width-half">
+                        <div class="image-actions">
+                            <div class="button-holder save-image">
+                                <button class="image-button save-logo-type-button">Save Image</button>
+                            </div>
+                        </div>
                     </div>
             
                     <!-- Location Section -->
@@ -128,7 +138,7 @@
                     </div>
 
                         
-                    <p id="update-confirmation"></p>
+                    <div id="update-confirmation-alert"></div>
                     <!-- Submit Button -->
                     <div class="submit-section">
                         <button class="submit-button update-shop-button">Update Shop Information</button>
@@ -139,16 +149,71 @@
         </section>
 
 
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="toastSuccess" class="toast align-items-center text-bg-primary" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                    Hello, world! This is a toast message.
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="toastError" class="toast align-items-center text-bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                    Hello, world! This is a toast message.
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+
     </main>
     
     
     <script>
+        const toastSuccessTag = document.getElementById('toastSuccess');
+        const toastErrorTag = document.getElementById('toastError');
+
+        function toastSuccess(body) {
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastSuccessTag);
+            toastBootstrap.show();
+            $('.toast-body').text(body);
+        }
+        function toastError(body) {
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastErrorTag);
+            toastBootstrap.show();
+            $('.toast-body').text(body);
+        }
+
+        const alertPlaceholder = document.getElementById('update-confirmation-alert')
+        const appendAlert = (message, type) => {
+            const wrapper = document.createElement('div')
+                wrapper.innerHTML = [
+                    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                    `   <div>${message}</div>`,
+                    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                    '</div>'
+                ].join('')
+
+                alertPlaceholder.append(wrapper)
+            }
+            const alertTrigger = document.getElementById('liveAlertBtn')
+            if (alertTrigger) {
+                alertTrigger.addEventListener('click', () => {
+                    appendAlert('Nice, you triggered this alert message!', 'success')
+            })
+        }   
+
         // Populate fields with shop object values
         $(document).ready(function() {
             $('#shop-name').val(shop[0].shopName);
             $('#shop-description').val(shop[0].shopDescription);            
-            $('#shop-logo-type').attr('src', root + 'images/craftify/' + shop[0].logoType);
-            $('#shop-logo-mark').attr('src', root + 'images/craftify/' + shop[0].logoMark);
+            $('#shop-logo-type-img').attr('src', root + 'images/craftify/' + shop[0].logoType);
+            $('#shop-logo-mark-img').attr('src', root + 'images/craftify/' + shop[0].logoMark);
             $('#shop-location').val(shop[0].location);
             $('#shop-contact').val(shop[0].contactNumber);
             $('#shop-email').val(shop[0].email);
@@ -163,9 +228,152 @@
             $('#hero-line').val(shop[0].heroLine);
             $('#hero-line-highlight').val(shop[0].heroLineHighlight);
             $('#hero-description').val(shop[0].heroDescription);
+            $(".save-logo-mark-button").hide();
+            $(".save-logo-type-button").hide();
         });
 
         
+        $("#shop-logo-mark").on('change', () => {           
+            const fileInput = $("#shop-logo-mark")[0];
+            const file = fileInput.files[0];
+
+            // Check if a file was selected
+            if (file) {
+                // Validate file type (optional)
+                const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                if (!validImageTypes.includes(file.type)) {
+                    alert("Please select a valid image file (JPEG, PNG, GIF).");
+                    fileInput.value = ""; // Clear the input
+                    return;
+                }
+
+                // Create a FileReader to read the file and preview it
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Show the image preview
+                    $('#shop-logo-mark-img').attr('src', e.target.result).show();
+                    $(".save-logo-mark-button").show();
+                };
+                reader.readAsDataURL(file); // Convert the file to a base64 string
+
+            } else {
+                alert("Invalid file.");
+            }
+        });
+
+        $("#shop-logo-type").on('change', () => {          
+            const fileInput = $("#shop-logo-type")[0];
+            const file = fileInput.files[0];
+
+            // Check if a file was selected
+            if (file) {
+                // Validate file type (optional)
+                const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                if (!validImageTypes.includes(file.type)) {
+                    alert("Please select a valid image file (JPEG, PNG, GIF).");
+                    fileInput.value = ""; // Clear the input
+                    return;
+                }
+
+                // Create a FileReader to read the file and preview it
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Show the image preview
+                    $('#shop-logo-type-img').attr('src', e.target.result).show();
+                    $(".save-logo-type-button").show();
+                };
+                reader.readAsDataURL(file); // Convert the file to a base64 string
+
+            } else {
+                alert("Invalid file.");
+            }
+
+        });
+
+        $(".save-logo-mark-button").on('click', () => {           
+            const fileInput = $("#shop-logo-mark")[0];
+            const file = fileInput.files[0];
+            let fileName = "woodcraftify_logomark";
+
+            // Ensure a file is selected
+            if (!file) {
+                alert("Please select an image file.");
+                return;
+            }
+
+            // Create a FormData object
+            const formData = new FormData();
+            formData.append('image', file);
+            formData.append('name', fileName);
+
+            // Send data to PHP script via AJAX
+            $.ajax({
+                url: root+'php/uploads/uploadShopLogos.php', // The URL of your PHP script
+                type: 'POST',
+                data: formData,
+                processData: false,  // Prevent jQuery from automatically transforming the data into a query string
+                contentType: false,  // Prevent jQuery from setting Content-Type header, so the browser sets it correctly for file uploads
+                success: function(response) {
+                    // Handle the response from the server
+                    if(response.success) {
+                        // alert("Image uploaded successfully!");
+                    }else {
+                        console.log(response);
+
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('AJAX Error:', textStatus, errorThrown);
+                    alert("An error occurred while uploading the image.");
+                }
+            });
+            
+            $('.save-logo-mark-button').hide(); 
+            toastSuccess("Image saved successfully!")
+        });
+
+        $(".save-logo-type-button").on('click', () => {   
+            const fileInput = $(".shop-logo-type")[0];
+            const file = fileInput.files[0];
+            let fileName = "woodcraftify_logotype";
+            // Ensure a file is selected
+            if (!file) {
+                alert("Please select an image file.");
+                return;
+            }
+            
+
+            // Create a FormData object
+            const formData = new FormData();
+            formData.append('image', file);
+            formData.append('name', fileName);
+
+            // Send data to PHP script via AJAX
+            $.ajax({
+                url: root+'php/uploads/uploadShopLogos.php', // The URL of your PHP script
+                type: 'POST',
+                data: formData,
+                processData: false,  // Prevent jQuery from automatically transforming the data into a query string
+                contentType: false,  // Prevent jQuery from setting Content-Type header, so the browser sets it correctly for file uploads
+                success: function(response) {
+                    
+                    // Handle the response from the server
+                    if(response.success) {
+                        alert("Image uploaded successfully!");
+                    } else {
+                        console.log(response);
+
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('AJAX Error:', textStatus, errorThrown);
+                    alert("An error occurred while uploading the image.");
+                }
+            });
+            $('.save-logo-type-button').hide(); 
+            toastSuccess("Image saved successfully!")
+        });
+
         $(".update-shop-button").on('click', () => {                
             // new product functionality here
             const shopName = $('#shop-name').val();
@@ -211,12 +419,14 @@
                     success: function(response) {
                         // Handle the response from the server
                         console.log('Shop Updated successfully:', response);
-                        $("#update-confirmation").text("Successfully Updated Shop Information");
+                        // $("#update-confirmation").text("Successfully Updated Shop Information");
+                        appendAlert("Shop Updated successfully!", "success")
                     },
                     error: function(xhr, status, error) {
                         // Handle any errors
                         console.error('Error updating shop:', error);
-                        $("#update-confirmation").text("Error Updating Shop Information");
+                        // $("#update-confirmation").text("Error Updating Shop Information");
+                        appendAlert("Shop Updating Failed! Try again.", "danger")
                     }
                 });
         });

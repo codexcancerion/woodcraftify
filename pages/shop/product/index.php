@@ -55,7 +55,7 @@
                     </div>
             
             
-                    <button class="cta-button-big">Buy Now</button>
+                    <button class="cta-button-big" onclick="buyNowClicked()">Buy Now</button>
                 </div>
             </div>
             
@@ -125,23 +125,19 @@
             // Update the available quantity
             $('.this-product-quantity span').last().text('Available: ' + productDetails.availableQuantity);
 
-            var category;
-
-            categories.map(cat => {
-                if (cat.categoryId === productDetails.categoryId) category = cat.categoryName;
-            })
             
 
             // Update the product category
-            $('.this-product-category span').last().text('Category: ' + category);
+            $('.this-product-category span').last().text('Category: ' + productDetails.category);
 
 
             showRelatedProducts("related-products", productDetails.category, root);
 
         });
 
-        
-        
+       function buyNowClicked(){
+            alert("This functionality is unavailable. Contact Us if interested.");
+       }       
 
     </script>
 <?php

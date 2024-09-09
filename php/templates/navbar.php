@@ -6,7 +6,7 @@
     <div class="nav-logo portion">
         <a href="<?php echo $root ?>">
             <div class="logo-holder">
-                <img class="logo">
+                <img class="nav-logo">
             </div>
         </a>
     </div>
@@ -27,5 +27,6 @@
 </header>
 
 <script>
-    $('.logo').attr("src", root+"images/craftify/"+shop[0].logoType)
+    $('.nav-logo').attr("src", root+"images/craftify/"+shop[0].logoType);
+    console.log(shop[0].logoType);
 </script>

@@ -35,7 +35,7 @@ a {
     padding-bottom: 0;
 }
 .section.colored {
-    background-color: var(--cool5);
+    background-color: var(--cool4);
     color: white;
 }
 .section.colored .page-title {

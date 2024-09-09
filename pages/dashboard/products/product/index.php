@@ -33,13 +33,7 @@
                 <h1 class="dash-title-number"></h1>
                 <h1 class="dash-title">Product Information</h1>
                     
-                    <!-- Product Image -->
-                    <div class="input-section">
-                        <label for="" class="input-label">Product Image</label>
-                        <img id="product-image" src="" alt="Product Image" class="product-image-dashboard">
-                        <br>
-                        <input id="product-image-upload" name="product-image-upload" type="file" class="input-field product-image-upload width-half">
-                    </div>
+                    
 
                     <!-- Product Name -->
                     <div class="input-section">
@@ -67,7 +61,7 @@
 
                     <!-- Dimensions -->
                     <div class="input-section">
-                        <label for="dimensions" class="input-label">Dimensions (L x W x H) (cm)</label>
+                        <label class="input-label">Dimensions (L x W x H) (cm)</label>
                         
                         <!-- Length Input -->
                         <input id="length" name="length" type="number" class="input-field dimensions width-quarter" placeholder="Length (cm)">
@@ -94,6 +88,25 @@
                             <!-- Options are added by the jquery below -->
                         </select>
                     </div>
+
+                    <!-- Product Image -->
+                    <div class="input-section">
+                        <label class="input-label">Product Image</label>
+                        <img id="product-image" src="" alt="Product Image" class="product-image-dashboard">
+                        <br>
+                        <input id="product-image-upload" name="product-image-upload" type="file" class="input-field product-image-upload width-half">
+                        
+                        <div class="image-actions">
+                            <div class="button-holder save-image">
+                                <button class="image-button save-image-button">Save Image</button>
+                            </div>
+                            <div class="button-holder update-image">
+                                <button class="image-button update-image-button">Update Image</button>
+                            </div>
+                        </div>
+                    </div>
+
+
 
 
 
@@ -127,7 +140,11 @@
     
     
     
-    <script>
+    <script>       
+        let imageSaved = false;
+        let imageChanged = false;
+
+
         // Function to get query parameter by name
         const getQueryParam = (param) => {
             const urlParams = new URLSearchParams(window.location.search);
@@ -143,7 +160,14 @@
         ?>
 
         
-        $(".add-new-product-button").on('click', () => {                
+        $(".add-new-product-button").on('click', () => {      
+            console.log("image changed: "+imageChanged);
+            if (imageChanged) {
+                console.log("image saved: "+imageSaved);
+                if (!imageSaved) {
+                    saveProductImage();
+                }
+            }          
             // new product functionality here
             const prodName = $('#product-name').val();
             const prodDesc = $('#product-description').val();
@@ -180,9 +204,16 @@
                         console.error('Error adding product:', error);
                     }
                 });
+
         });
 
         $(".update-product-button").on('click', () => {      
+            if (imageChanged) {
+                if (!imageSaved) {
+                    saveProductImage();
+                }
+            }
+            
             console.log("clicked update");
             // new product functionality here
             const prodName = $('#product-name').val();
@@ -222,6 +253,8 @@
                         console.error('Error updating product:', error);
                     }
                 });
+                
+            
         });
 
         $(".delete-button").on('click', () => {                
@@ -305,6 +338,103 @@
                 });
         });
 
+        // JavaScript/jQuery: Track the image input
+        $(".product-image-upload").on('change', function() {
+            const fileInput = this;
+            const file = fileInput.files[0];
+
+            // Check if a file was selected
+            if (file) {
+                // Validate file type (optional)
+                const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                if (!validImageTypes.includes(file.type)) {
+                    alert("Please select a valid image file (JPEG, PNG, GIF).");
+                    fileInput.value = ""; // Clear the input
+                    return;
+                }
+
+                // Create a FileReader to read the file and preview it
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Show the image preview
+                    $('#product-image').attr('src', e.target.result).show();
+                    imageChanged=true;
+                };
+                reader.readAsDataURL(file); // Convert the file to a base64 string
+
+                if (productDetails) {
+                    $('.update-image-button').show(); 
+                } else {
+                    $('.save-image-button').show(); 
+                }
+            } else {
+                // Hide the image preview if no file is selected
+                $('#imagePreview').hide();
+                imageChanged=false;
+                alert("Invalid file.");
+            }
+        });
+
+        $(".save-image-button").on('click', () => { 
+            saveProductImage();
+        })
+
+        $(".update-image-button").on('click', () => {  
+            saveProductImage();
+            console.log("Update successfull")
+            alert("Image uploaded successfully!");
+            $('.save-image-button').hide(); 
+            $('.update-image-button').hide(); 
+            imageSaved=true;
+            window.location.reload();
+        })
+
+        const saveProductImage = () => {            
+            const fileInput = $(".product-image-upload")[0];
+            const file = fileInput.files[0];
+            let fileName;
+            if(productDetails) {
+                fileName = productDetails.productImage;
+            } else {
+                fileName = $('#product-name').val();
+            }
+
+            // Ensure a file is selected
+            if (!file) {
+                alert("Please select an image file.");
+                return;
+            }
+
+            // Create a FormData object
+            const formData = new FormData();
+            formData.append('image', file);
+            formData.append('name', fileName);
+
+            // Send data to PHP script via AJAX
+            $.ajax({
+                url: root+'php/uploads/uploadProductImage.php', // The URL of your PHP script
+                type: 'POST',
+                data: formData,
+                processData: false,  // Prevent jQuery from automatically transforming the data into a query string
+                contentType: false,  // Prevent jQuery from setting Content-Type header, so the browser sets it correctly for file uploads
+                success: function(response) {
+                    // Handle the response from the server
+                    if(response.success) {
+                        alert("Image uploaded successfully!");
+                        $('.save-image-button').hide(); 
+                        $('.update-image-button').hide(); 
+                        imageSaved=true;
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('AJAX Error:', textStatus, errorThrown);
+                    alert("An error occurred while uploading the image.");
+                }
+            });
+        };
+
+
+        
         
         
         var productDetails;
@@ -336,6 +466,9 @@
                 return featured;
             }
 
+            //  Hides image actions by default
+            $('.save-image-button').hide(); 
+            $('.update-image-button').hide(); 
 
             // Populate fields with product details
             if (productDetails && productId != "new") {
@@ -352,6 +485,7 @@
                 
                 $('.add-new-product').hide();                
                 featuredProduct(productId) ? $('.add-to-feature').hide() : $('.remove-from-feature').hide();
+                
                 
             } else {
                 $('#product-image').hide();

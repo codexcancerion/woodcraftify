@@ -21,7 +21,7 @@
             <div class="title-section">
                 <h1 class="hero-title"><span class="heroLine"></span> <span class="colored heroLineHighlight"></span></h1>
                 <p class="hero-subtitle"></p>
-                <a href="./pages/shop/index.html"><div class="hero-button">Explore Products <i class="material-icons">arrow_right</i> </div></a>
+                <a href="./pages/shop/"><div class="hero-button">Explore Products <i class="material-icons">arrow_right</i> </div></a>
             </div>
             <div class="img-section">
                 <div class="img-holder">
@@ -83,6 +83,19 @@
     $(".value1desc").text(values[0].description);
     $(".value2desc").text(values[1].description);
     $(".value3desc").text(values[2].description);
+        $(document).ready(function() {
+            // Fade in Hero Title
+            $('.hero-title').hide().fadeIn(1000);
+            
+            // Slide up Subtitle
+            $('.hero-subtitle').hide().slideDown(1000);
+            
+            // Bounce Hero Button
+            $('.hero-button').hide().fadeIn(1000).effect('bounce', { times: 3 }, 800);
+            
+            // Zoom in Hero Image
+            $('.img-holder').hide().fadeIn(1000);
+        });
 </script>
 <?php
     renderFooter($root);

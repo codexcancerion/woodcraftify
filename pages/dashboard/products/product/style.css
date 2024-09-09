@@ -1,0 +1,36 @@
+.image-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.dashboard .button-holder{
+    padding: 5px;
+}
+
+.dashboard .image-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard .image-button.save-image-button {
+    background-color: rgba(12, 226, 48, 0.884) !important;
+}
+
+.dashboard .image-button.save-image-button:hover {
+    background-color: rgba(7, 129, 44, 0.884) !important;
+}
+
+.dashboard .image-button.update-image-button {
+    background-color: rgba(25, 86, 255, 0.884) !important;
+}
+
+.dashboard .image-button.update-image-button:hover {
+    background-color: rgba(12, 26, 226, 0.884) !important;
+}

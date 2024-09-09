@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2024 at 06:52 AM
+-- Generation Time: Sep 08, 2024 at 11:30 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -67,7 +67,8 @@ CREATE TABLE `featured_products` (
 
 INSERT INTO `featured_products` (`id`, `shopId`, `productId`) VALUES
 (17, NULL, '12'),
-(18, NULL, '14');
+(18, NULL, '14'),
+(19, NULL, '29');
 
 -- --------------------------------------------------------
 
@@ -98,7 +99,22 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`productId`, `shopId`, `productName`, `productDescription`, `productImage`, `price`, `availableQuantity`, `category`, `dimensionsId`, `materials`, `length`, `width`, `height`) VALUES
 (12, NULL, 'Cordilleran Wooden Dining Table', 'A handcrafted wooden dining table made from sustainable Cordilleran wood, featuring traditional carvings.', 'Cordilleran Wooden Dining Table', 15000.00, 5, 'Tables', 'D001', 'Cordilleran Wood', 200, 100, 75),
 (14, NULL, 'Bontoc Wooden Bench', 'A sturdy and elegantly designed bench inspired by Bontoc craftsmanship.', 'Bontoc Wooden Bench', 8000.00, 10, 'Chairs', 'D001', 'Bamboo, Cordilleran Wood', 150, 50, 45),
-(15, NULL, 'Ifugao Wooden Sculpture', 'An intricately carved Ifugao wooden sculpture symbolizing strength and resilience.', 'Ifugao Wooden Sculpture', 5000.00, 20, 'Sculptures', 'D001', 'Cordilleran Wood', 30, 20, 40);
+(15, NULL, 'Ifugao Wooden Sculpture', 'An intricately carved Ifugao wooden sculpture symbolizing strength and resilience.', 'Ifugao Wooden Sculpture', 5000.00, 20, 'Sculptures', 'D001', 'Cordilleran Wood', 30, 20, 40),
+(16, NULL, 'Sagada Wooden Shelf', 'A multi-layered wooden shelf that blends functionality with Sagadas artistic touch.', 'Sagada Wooden Shelf', 12000.00, 7, 'Shelves', 'D001', 'Wood', 100, 40, 180),
+(17, NULL, 'Kalinga Wooden Chair', 'A traditional Kalinga chair with intricate woodwork and a comfortable design.', 'Kalinga Wooden Chair', 6000.00, 12, 'Chairs', 'D001', 'Wood', 70, 70, 90),
+(18, NULL, 'Mountain Province Wooden Cabinet', 'A solid wood cabinet with ample storage, showcasing the craftsmanship of Mountain Province.', 'Mountain Province Wooden Cabinet', 25000.00, 6, 'Cabinets', 'D001', 'Wood', 120, 60, 200),
+(19, NULL, 'Cordilleran Wooden Wall Art', 'A beautifully carved wall art piece depicting traditional Cordilleran patterns.', 'Cordilleran Wooden Wall Art', 4500.00, 15, 'Wall Art', 'D001', 'Wood', 100, 2, 50),
+(20, NULL, 'Baguio Wooden Rocking Chair', 'A classic rocking chair made from durable wood, offering comfort and style.\n', 'Baguio Wooden Rocking Chair', 9000.00, 6, 'Chairs', 'D001', 'Wood', 110, 60, 100),
+(21, NULL, 'Cordilleran Bamboo Lamp', 'An eco-friendly bamboo lamp that adds warmth and a natural touch to any space.', 'Cordilleran Bamboo Lamp', 3000.00, 10, 'Lamps', 'D001', 'Wood, Bamboo', 20, 20, 60),
+(22, NULL, 'Traditional Wooden Bed', 'A traditional wooden bed frame with beautiful Cordilleran carvings, perfect for any bedroom.', 'Traditional Wooden Bed', 18000.00, 5, 'Beds', 'D001', 'Wood', 200, 160, 50),
+(23, NULL, 'Handwoven Basket', 'A beautifully handwoven basket made from natural materials, perfect for storage or decoration.', 'Handwoven Basket', 2500.00, 20, 'Containers', 'D001', 'Bamboo, Abaca', 50, 50, 30),
+(24, NULL, 'Wooden Jewelry Box', 'A small wooden jewelry box with intricate carvings, perfect for storing your precious items.', 'Wooden Jewelry Box', 3500.00, 15, 'Containers', 'D001', 'Wood', 20, 15, 10),
+(26, NULL, 'Cordilleran Wooden Bedside Table', 'A handcrafted wooden bedside table with a minimalist design and natural wood finish.', 'Cordilleran Wooden Bedside Table', 6000.00, 8, 'Tables', 'D001', 'Wood', 50, 40, 60),
+(27, NULL, 'Bamboo Candle Holder', 'A bamboo candle holder that adds a touch of nature to any room, perfect for creating a cozy ambiance.', 'Bamboo Candle Holder', 1200.00, 25, 'Home DÃ©cor', 'D001', 'Bamboo', 15, 15, 20),
+(28, NULL, 'Cordilleran Wooden Wardrobe', 'A spacious wooden wardrobe with traditional Cordilleran carvings, providing both style and functionality.', 'Cordilleran Wooden Wardrobe', 28000.00, 4, 'Cabinets', 'D001', 'Wood', 180, 60, 220),
+(29, NULL, 'Ifugao Carved Wooden Bowl', 'A beautifully carved wooden bowl inspired by Ifugao culture, perfect for serving or decoration.', 'Ifugao Carved Wooden Bowl', 3000.00, 18, 'Home DÃ©cor', 'D001', 'Wood', 30, 30, 15),
+(30, NULL, 'Wooden Room Divider', 'A foldable wooden room divider with intricate carvings, offering both privacy and style.', 'Wooden Room Divider', 10000.00, 6, 'Home DÃ©cor', 'D001', 'Wood', 150, 2, 180),
+(32, NULL, 'Cordilleran Wall Hanging', 'A traditional wall hanging made from natural fibers and wooden elements, perfect for adding a cultural touch to your home.', 'Cordilleran Wall Hanging', 3500.00, 12, 'Wall Art', 'D001', 'Wood, Fibers', 80, 2, 120);
 
 -- --------------------------------------------------------
 
@@ -127,7 +143,7 @@ CREATE TABLE `shops` (
 --
 
 INSERT INTO `shops` (`shopId`, `shopName`, `shopDescription`, `logoType`, `logoMark`, `location`, `contactNumber`, `email`, `mission`, `story`, `heroLine`, `heroLineHighlight`, `heroDescription`) VALUES
-(1, 'Woodcraftify', 'Crafting Excellence, Preserving Traditions, Shaping the Future', 'woodcraftify_logotype.png', 'woodcraftify_logomark.png', 'Baguio City, Philippines', '+63 912 345 6789', 'contact@woodcrafts.ph', 'Our mission is to craft furniture and decor that embody authenticity and sustainability, while honoring the cultural heritage of the Cordilleras. We strive to deliver products that are not only beautiful but also functional and durable.', 'WoodCraftify is a homegrown brand dedicated to preserving the rich heritage of Cordilleran craftsmanship. With every piece we create, we tell a story of tradition, sustainability, and unparalleled quality. Our journey began with a vision to connect skilled artisans with clients who appreciate the art of woodworking.', 'Furnish your homes like a', 'MASTER', 'In Woodcraftify, we help you furnish your homes with quality crafts and furnitures.');
+(1, 'Woodcraftify', 'Crafting Excellence, Preserving Traditions, Shaping the Future', 'woodcraftify_logotype.png', 'woodcraftify_logomark.png', 'Baguio City, Philippines', '+63 912 345 6789', 'contact@woodcrafts.ph', 'Our mission is to craft furniture and decor that embody authenticity and sustainability, while honoring the cultural heritage of the Cordilleras. We strive to deliver products that are not only beautiful but also functional and durable.', 'WoodCraftify is a homegrown brand dedicated to preserving the rich heritage of Cordilleran craftsmanship. With every piece we create, we tell a story of tradition, sustainability, and unparalleled quality. Our journey began with a vision to connect skilled artisans with clients who appreciate the art of woodworking.', 'Wazzup', 'MASTER', 'In Woodcraftify, we help you furnish your homes with quality crafts and furnitures.');
 
 -- --------------------------------------------------------
 
@@ -205,13 +221,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `featured_products`
 --
 ALTER TABLE `featured_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `shops`

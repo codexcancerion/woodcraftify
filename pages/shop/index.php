@@ -25,14 +25,7 @@
             </div>
         </section>
 
-        <!-- <section class="section featured">
-            <h1 class="page-title left">Featured Products<hr></h1>
-            <div class="featured-products">
-                <script>
-                    FeaturedProducts("featured-products", root);
-                </script>
-            </div>            
-        </section> -->
+       
 
         <section class="section colored categories" id="categories">
             <h2 class="page-title">Pick a category</h2>
@@ -72,9 +65,10 @@
 
                 
             });
-
-
         });
+
+        
+
     </script>
 
 <?php
